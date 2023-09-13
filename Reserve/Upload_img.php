@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="upload.php" method="POST" enctype="multipart/form-data"
+  <input type="file" name="file"input/>
+  <button type="submit" name="submit">upload</button>
+</from>
+</body>
+
+</html>
+
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
