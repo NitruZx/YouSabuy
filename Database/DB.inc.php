@@ -45,7 +45,7 @@ class DatabaseConnection {
         $result = $this->executeQuery($sql);
 
         if ($result) {
-            return $this->connection->insert_id; // Return the ID of the inserted row
+            return $result; // Return the ID of the inserted row
         } else {
             die("Insertion failed: " . $this->connection->error);
         }
@@ -55,17 +55,26 @@ class DatabaseConnection {
         $this->connection->close();
     }
 }
-//Test
-// $db = new DatabaseConnection();
+$db = new DatabaseConnection();
+$insertData = [
+    "Tenant_ID" => "A041",
+    "Fname" => "Jessada",
+    "Lname" => "Taengsuwan",
+    "Tel" => "0870677230",
+    "Citizen_ID" => "1130100068585",
+    "Room_ID" => "313"
+    // Add more columns and values as needed
+];
 
-// $sql = "INSERT INTO Tenant (Tenant_ID, Fname, Lname, Tel, Citizen_ID, Room_ID) VALUES ('A041', 'Jessada', 'Taengsuwan', '0870677230', '1130100068585', '313');";
-// $inserted = $db->executeQuery($sql);
-// if($inserted) {
-//     echo "inserted success";
-// } else {
-//     echo "insert failed";
-// }
+// Example insert query
+$insertedId = $db->insert("Tenant", $insertData);
 
-// // Close the database connection when done
-// $db->close();
+if ($insertedId) {
+    echo "Data inserted successfully.";
+} else {
+    echo "Insertion failed.";
+}
+
+// Close the database connection when done
+$db->close();
 ?>
