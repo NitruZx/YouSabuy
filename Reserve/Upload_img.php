@@ -2,7 +2,7 @@
 <html>
 <body>
 <form action="upload.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file"/>
+  <input type="file" name="files"/>
   <button type="submit" name="submit">upload</button>
 </from>
 </body>
