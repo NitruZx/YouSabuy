@@ -7,7 +7,7 @@
 <body>
 <div id = "frm">  
         <h1>Reserve Room</h1>  
-        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
+        <form name="f1" action = "Reserve.php" onsubmit = "return validation()" method = "POST">  
             <p>   
                 <lable>
                    Name: </label>  
