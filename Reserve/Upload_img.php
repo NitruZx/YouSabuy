@@ -10,6 +10,14 @@
 
 </body>
 </html>
+<?php
+if(isset($_POST['submit'])){
+  $flie = $_FILES['fileToUpload'];
+  print_r($flie);
+  $flieName = $_FILES['fileToUpload']['name'];
+}
+
+?>
 
 <?php
 $target_dir = "uploads/";
@@ -36,10 +44,10 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
+// if ($_FILES["fileToUpload"]["size"] > 500000) {
+//   echo "Sorry, your file is too large.";
+//   $uploadOk = 0;
+// }
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -51,6 +59,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
+
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
