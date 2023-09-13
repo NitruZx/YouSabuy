@@ -36,6 +36,6 @@
     $Tel_number;
     $Email;
     $Person_Num;
-    
+    $check = 0;
 
 ?>
