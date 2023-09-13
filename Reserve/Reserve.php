@@ -42,9 +42,10 @@
     $Tel_number = $_POST['phone'];
     $Email = $_POST['email'];
     $Reserve = $_POST['reserve'];
+    $day = $_POST['daycheckin'];
     if(isset($_POST['reserve'])){
         if(isset($_POST['firstname']) || isset($_POST['lastname']) || isset($_POST['phone'])){
-            echo $f_name;
+            echo $f_name, $L_name, $Tel_number, $Email, $Reserve, $day;
         }
     }
     
