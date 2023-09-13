@@ -25,7 +25,6 @@
             <p>
                 <lable> checkin date <label>
                 <input type="date" id = "daycheckin" name="daycheckin"/>
-
         </p>
 
         </p>
@@ -38,11 +37,15 @@
 
 
 <?php
-    $f_name;
-    $L_name;
-    $Tel_number;
-    $Email;
-    $Person_Num;
-    $check = 0;
-
+    $f_name = $_POST['firstname'];
+    $L_name = $_POST['lastname'];
+    $Tel_number = $_POST['phone'];
+    $Email = $_POST['email'];
+    $Reserve = $_POST['reserve'];
+    if(isset($_POST['reserve'])){
+        if(isset($_POST['firstname']) || isset($_POST['firstname']) || isset($_POST['phone']) == null){
+            echo "KRUY";
+        }
+    }
+    
 ?>
