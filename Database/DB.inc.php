@@ -56,25 +56,31 @@ class DatabaseConnection {
     }
 }
 $db = new DatabaseConnection();
-$insertData = [
-    "Tenant_ID" => "A041",
-    "Fname" => "Jessada",
-    "Lname" => "Taengsuwan",
-    "Tel" => "0870677230",
-    "Citizen_ID" => "1130100068585",
-    "Room_ID" => "313"
-    // Add more columns and values as needed
-];
+// $insertData = [
+//     "Tenant_ID" => "A003",
+//     "Fname" => "Augus",
+//     "Lname" => "Sri",
+//     "Tel" => "0870677220",
+//     "Citizen_ID" => "1160100068585",
+//     "Room_ID" => "326",
+//     // Add more columns and values as needed
+// ];
 
-// Example insert query
-$insertedId = $db->insert("Tenant", $insertData);
+// // Example insert query
+// $insertedId = $db->insert("Tenant", $insertData);
 
-if ($insertedId) {
-    echo "Data inserted successfully.";
+// if ($insertedId) {
+//     echo "Data inserted successfully.";
+// } else {
+//     echo "Insertion failed.";
+// }
+$sql = "DELETE FROM Tenant WHERE Tenant_ID = 'A003'";
+$delete = $db->executeQuery($sql);
+if ($delete) {
+    echo "Delete success";
 } else {
-    echo "Insertion failed.";
+    echo "Delete fail";
 }
-
 // Close the database connection when done
 $db->close();
 ?>
