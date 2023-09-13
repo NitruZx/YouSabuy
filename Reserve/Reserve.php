@@ -45,7 +45,12 @@
     $day = $_POST['daycheckin'];
     if(isset($_POST['reserve'])){
         if(isset($_POST['firstname']) || isset($_POST['lastname']) || isset($_POST['phone'])){
-            echo $f_name, $L_name, $Tel_number, $Email, $Reserve, $day;
+            echo $f_name;
+            echo $L_name;
+            echo $Tel_number;
+            echo $Email;
+            echo $Reserve;
+            echo $day;
         }
     }
     
