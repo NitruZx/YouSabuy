@@ -51,10 +51,15 @@ if (file_exists($target_file)) {
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+&& $imageFileType != "pdf" ) {
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
+$fileType = strtolower($_FILES['fileToUpload']['type']);
+  if ($fileType != 'application/pdf') {
+    echo 'The file must be a PDF file.';
+    exit;
+  }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
