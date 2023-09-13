@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en"
-<head> </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
 <body>
 <div id = "frm">  
-        <h1>Login</h1>  
+        <h1>Reserve Room</h1>  
         <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
-            <p>  
-                <label> UserName: </label>  
-                <input type = "text" id ="user" name  = "user" />  
+            <p>   
+                <lable>
+                   Name: </label>  
+                <input type = "text" id ="firstname" name  = "firstname"  placeholder="firstname"/>
+                <input type = "text" id ="lastname" name  = "lastname"  placeholder="lastname"/> 
             </p>  
-            <p>  
-                <label> lastname: </label>  
-                <input type = "password" id ="pass" name  = "pass" />  
-            </p>  
+            <p>
+                <label> Phone : </label>
+                <input type = "text" id ="phone" name = "phone" placeholder="phone"/>
+            </p>
+            <p>
+                <lable> Email : </lable>
+                <input type="text" id ="email" name="email" placeholder="email">
+            </p>
+            <p>
+                <lable> checkin date <label>
+                <input type="date" id = "daycheckin" name="daycheckin"/>
+
+        </p>
+
+        </p>
             <p>     
-                <input type =  "submit" id = "btn" value = "Login" />  
+                <input type =  "submit" id = "btn" value = "Reserve-Room" />  
             </p>  
         </form>  
     </div>  
