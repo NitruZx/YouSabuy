@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-<head>
-    <meta charset="UTF-8">
-
-</head>
+<head> </head>
 <body>
 <div id = "frm">  
         <h1>Login</h1>  
@@ -30,6 +27,6 @@
     $Tel_number;
     $Email;
     $Person_Num;
-    
+    $check = 0;
 
 ?>
