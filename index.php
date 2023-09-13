@@ -1,5 +1,5 @@
 <?php
     echo "test";
-    echo "PLS do error"
+    echo "PLS do error";
     echo "Error esus";
 ?>
