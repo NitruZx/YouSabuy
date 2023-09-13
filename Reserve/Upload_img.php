@@ -12,9 +12,9 @@
 </html>
 <?php
 if(isset($_POST['submit'])){
-  $flie = $_FILES['file'];
+  $flie = $_FILES['fileToUpload'];
   print_r($flie);
-  $flieName = $_FILES['file']['name'];
+  $flieName = $_FILES['fileToUpload']['name'];
 }
 
 ?>
