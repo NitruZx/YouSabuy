@@ -22,6 +22,13 @@
                 <lable> Email : </lable>
                 <input type="text" id ="email" name="email" placeholder="email">
             </p>
+            <p>
+                <lable> checkin date <label>
+                <input type="date" id = "daycheckin" name="daycheckin"/>
+
+        </p>
+
+        </p>
             <p>     
                 <input type =  "submit" id = "btn" value = "Reserve-Room" />  
             </p>  
