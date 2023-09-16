@@ -8,8 +8,8 @@
 https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 ">
 </script>
-	<title>Document</title>
-	<link rel="stylesheet" href="{{url('build/assets/detail.css')}}">
+	<title>Room-Detail</title>
+	<link rel="stylesheet" href="{{ asset('css/detail.css')}}">
 
 </head>
 <body>
