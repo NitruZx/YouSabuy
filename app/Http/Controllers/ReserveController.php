@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ReserveController extends Controller
 {
-    //
+    function index(){
+        return view('')
+
+    }
 }
