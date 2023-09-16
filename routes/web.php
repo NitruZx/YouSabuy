@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/paymentlist', [PaymentController::class, 'show'])->name('payment');
+
+Route::get('/inform/report', function () {
+    return view('/Client/Inform/report');
+});
+Route::get('/inform/repair-rq', function () {
+    return view('/Client/Inform/repair-request');
+});
+Route::get('/inform/maidcall', function () {
+    return view('/Client/Inform/maidcall');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
