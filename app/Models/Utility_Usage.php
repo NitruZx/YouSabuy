@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Utility_Usage extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    
+    const UPDATED_AT = 'Created_Date';
 }

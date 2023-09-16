@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reserves', function (Blueprint $table) {
+        Schema::create('utility__usages', function (Blueprint $table) {
             $table->id();
-            $table->string('Fname', 100);
-            $table->string('Lname', 100);
-            $table->string('Email'. 100);
-            $table->dateTime('Checkin_Date');
-            $table->dateTime('Checkout_Date');
+            $table->string('Room_ID', 10);
             $table->bigInteger('User_ID');
-            $table->timestamps();
-            $table->string('Room');
+            $table->integer('Current_Water_Unit');
+            $table->integer('Current_Electric_Unit');
+            $table->integer('Monthy_Water_Unit');
+            $table->integer('Monthy_Electric_Unit');
+            $table->timestamp('Created_Date');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reserves');
+        Schema::dropIfExists('utility__usages');
     }
 };

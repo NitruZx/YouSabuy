@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tenants', function (Blueprint $table) {
-            $table->id("");
+            $table->id();
             $table->string('Fname', 100);
             $table->string('Lname', 100);
             $table->string('Tel', 10);
-            $table->bigIntger('Room_Id', 20);
+            $table->bigInteger('Room_Id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
