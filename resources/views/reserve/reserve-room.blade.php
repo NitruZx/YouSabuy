@@ -23,6 +23,7 @@
   <hr>
   <label id="icon" for="fname"><i class="icon-user"></i></label>
   <input type="text" name="fname" id="fname" placeholder="FirstName" required/>
+  
   <label id="icon" for="lname"><i class="icon-user"></i></label>
   <input type="text" name="lname" id="lname" placeholder="Last Name" required/>
   

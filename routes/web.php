@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reserve', function () {
-    return view('reserve-room');
+Route::get('/roomdetail', function () {
+    return view('roomdetail/room-detail');
 });
 
 Route::get('/dashboard', function () {

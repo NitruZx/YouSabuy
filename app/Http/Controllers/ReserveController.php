@@ -21,8 +21,9 @@ class ReserveController extends Controller
             'Email100'=>$request->input('email'),
             'Checkin_Date'=>$request->input('datecheckin'),
             'Checkout_Date'=>$request->input('datecheckout'),
-            'User_ID'=>$request->input('fname'),
+            'User_ID'=>$request->input('room'),
             'Room'=>$request->input('room'),
+            'phone_number'=>$request->input('phone')
 
         ]);
 
