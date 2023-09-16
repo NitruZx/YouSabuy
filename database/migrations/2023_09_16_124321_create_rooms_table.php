@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status', 50);
             $table->integer('Monthly_Price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

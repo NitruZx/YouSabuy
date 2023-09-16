@@ -14,7 +14,6 @@ class ReserveController extends Controller
     }
 
     function addinfo(Request $request){
-
         DB::table('reservations')->insert([
             'Fname'=>$request->input('fname'),
             'Lname'=>$request->input('lname'),
