@@ -3,6 +3,7 @@
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
+
+
+Route::get('reserve', [ReserveController::class, 'index']);
+Route::post('addinfo', [ReserveController::class, 'addinfo']);
 
 
 require __DIR__.'/auth.php';
