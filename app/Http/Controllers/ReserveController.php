@@ -23,9 +23,10 @@ class ReserveController extends Controller
             'User_ID'=>$request->input('room'),
             'Room'=>$request->input('room'),
             'phone_number'=>$request->input('phone')
-
+            
         ]);
-
-
+        $upload_img = $request->file('Upload_img');
+        dd($upload_img);
     }
+    
 }
