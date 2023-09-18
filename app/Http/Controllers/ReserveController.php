@@ -35,4 +35,5 @@ class ReserveController extends Controller
         $reservation->save();
         return redirect()->route('dashboard');
     }
+    
 }
