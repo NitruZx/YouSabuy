@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('Fname', 100);
             $table->string('Lname', 100);
-            $table->string('Email'. 100);
+            $table->string('Email', 100);
             $table->dateTime('Checkin_Date');
             $table->dateTime('Checkout_Date');
             $table->bigInteger('User_ID');
-            $table->timestamps();
+            $table->timestamp('created_at');
             $table->string('Room');
         });
     }
