@@ -42,7 +42,7 @@
   <input type="text" name="bankaccount" id="name" placeholder="Bank Account" />
   <input type="text" name="room" id="room" placeholder="Room(Building/No.)" />
   <div class="avatar"><label>เอกสารยืนยัน: </label><input type="file" name="avatar" accept="pdf/*"  /></div>
-      <button type="submit" class="btn btn-primary btn-block" herf="/">Reserve</button>
+      <button type="submit" class="button">Reserve</button>
   </form>
 </div>
 </body>
