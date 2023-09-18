@@ -35,5 +35,18 @@ class ReserveController extends Controller
         $reservation->save();
         return redirect()->route('dashboard');
     }
+    public function upload(Request $request)
+    {
+        $file = $request->file('file');
+        if ($file) {
+            // Store the file with a unique name in the specified directory
+            $filePath = $file->store('uploads');
+            // You can also specify a custom disk or directory if needed:
+            // $filePath = $file->storeAs('custom_directory', 'custom_filename.jpg', 's3');
+            return "File uploaded successfully. Path: $filePath";
+        } else {
+            return "No file uploaded.";
+        }
+    }
     
 }
