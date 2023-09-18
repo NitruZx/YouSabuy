@@ -22,24 +22,24 @@
     @csrf
   <hr>
   <label id="icon" for="fname"><i class="icon-user"></i></label>
-  <input type="text" name="fname" id="fname" placeholder="FirstName" required/>
+  <input type="text" name="fname" id="fname" placeholder="FirstName"/>
   
   <label id="icon" for="lname"><i class="icon-user"></i></label>
-  <input type="text" name="lname" id="lname" placeholder="Last Name" required/>
+  <input type="text" name="lname" id="lname" placeholder="Last Name"/>
   
   <div>
     <label id="icon" for="phone"><i class="icon-phone "></i></label>
-    <input type="text" name="phone" id="phone" placeholder="Tel." required>
+    <input type="text" name="phone" id="phone" placeholder="Tel.">
     <label id="icon" for="email"><i class="icon-envelope "></i></label>
-    <input type="text" name="email" id="email" placeholder="Email" required>
+    <input type="text" name="email" id="email" placeholder="Email">
   </div>
   <div class="datetime">
     <label for="datetime">Choose Date(in):</label>
-    <input class="form-control calendar" type="date" name="datecheckin" required>
+    <input class="form-control calendar" type="date" name="datecheckin">
     <label for="datetime">Choose Date(out):</label>
-    <input class="form-control calendar" type="date" name="datecheckout" required>
+    <input class="form-control calendar" type="date" name="datecheckout">
 
-  <input type="text" name="name" id="name" placeholder="Bank Account" />
+  <input type="text" name="bankaccount" id="name" placeholder="Bank Account" />
   <input type="text" name="room" id="room" placeholder="Room(Building/No.)" />
   <div class="avatar"><label>เอกสารยืนยัน: </label><input type="file" name="avatar" accept="pdf/*"  /></div>
       <button type="submit" class="btn btn-primary btn-block" herf="/">Reserve</button>
