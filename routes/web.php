@@ -60,4 +60,5 @@ Route::post('addinfo', [ReserveController::class, 'addinfo']);
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
+
 require __DIR__.'/auth.php';
