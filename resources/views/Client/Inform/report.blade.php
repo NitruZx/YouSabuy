@@ -47,7 +47,13 @@
             <td>{{ $report->tel}}</td>
             <td>{{ $report->description}}</td>
             <td>{{ $report->receiver}}</td>
-            <td>{{ $report->status}}</td>
+            <td>
+            @if ($report->status === 'finished')
+              <span class="badge badge-success rounded-pill d-inline">finished</span>
+            @elseif ( $report->status === 'unfinished')
+              <span class="badge rounded-pill badge-danger">unfinished</span>
+            @endif
+            </td>
         </tr>
     @endforeach
   </thead>
