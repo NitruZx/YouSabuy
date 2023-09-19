@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-});
+})->name('roomdetail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -48,8 +48,9 @@ Route::middleware('auth')->group(function () {
 Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
 
 
-Route::get('reserve', [ReserveController::class, 'index']);
+Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo']);
+
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
 

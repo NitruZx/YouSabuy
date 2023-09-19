@@ -26,6 +26,11 @@
                         {{ __('Reports') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('dashboard')">
+                        {{ __('Roomdetail') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
