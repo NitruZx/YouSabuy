@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('repair__requests', function (Blueprint $table) {
             $table->id();
-            $table->integer('water_bill');
-            $table->integer('electric_bill');
-            $table->integer('charge');
-            $table->string('room_id');
+            $table->date('date');
+            $table->string('name');
+            $table->string('room');
+            $table->string('tel', 10);
+            $table->longText('description');
+            $table->string('receiver');
             $table->string('status');
-            $table->timestamp('created_at');
-            $table->timestamp('paydate');
+            // $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('repair__requests');
     }
 };

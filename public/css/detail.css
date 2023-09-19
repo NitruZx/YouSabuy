@@ -83,15 +83,20 @@
    opacity: 0.5;
  }
  /* รูปปกหลัง อีที่มันเคลื่อนๆได้*/
+ .navbar {
+    z-index: 3;
+ }
+
  .moving-image { 
      background: url('https://www.bogtui.com/wp-content/uploads/2021/06/19112019_10003-1536x1024.jpg') repeat fixed;
      background-size: cover;
      position: absolute;
+     /* margin-top: 65px; */
      top: 0; 
      left: 0; 
      right: 0;
      bottom: 0;
-     z-index: 1;
+     z-index: -1;
      width:100%;
      opacity: 0.4;
  }
