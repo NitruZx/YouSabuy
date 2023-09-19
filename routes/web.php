@@ -4,6 +4,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReserveController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +23,13 @@ Route::get('/', function () {
 
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-});
+})->name('roomdetail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/paymentlist', [PaymentController::class, 'show'])->name('payment');
+
 
 Route::get('/inform/report', function () {
     return view('/Client/Inform/report');
@@ -44,13 +45,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/paymentlist', [PaymentController::class, 'show'])->name('payment');
+    Route::get('reserve', [ReserveController::class, 'index']);
+    Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
+    Route::get('/inform', [ReportController::class, 'index'])->name('inform');
+    Route::get('/test', function () {
+        return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
+    });
 });
-Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
 
 
-Route::get('reserve', [ReserveController::class, 'index']);
+Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo']);
-Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
+Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
 require __DIR__.'/auth.php';
