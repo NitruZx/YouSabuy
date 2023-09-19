@@ -46,7 +46,7 @@
             <td>{{ $report->name}}</td>
             <td>{{ $report->room}}</td>
             <td>{{ $report->tel}}</td>
-            <td>{{ $report->descripton}}</td>
+            <td>{{ $report->description}}</td>
             <td>{{ $report->receiver}}</td>
             <td>{{ $report->status}}</td>
         </tr>
