@@ -37,7 +37,6 @@
         <th>Repair report</th>
         <th>ผู้รับแจ้ง</th>
         <th>Status</th>
-        <th>Actions</th>
     </tr>
     @foreach( $reports as $report)
         <tr>
