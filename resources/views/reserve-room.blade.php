@@ -40,7 +40,7 @@
   </div>
   <input type="text" name="name" id="name" placeholder="Bank Account" required/>
   <input type="text" name="name" id="name" placeholder="Room(Building/No.)" required/>
-  <div class="avatar"><label>Select file: </label><input type="file" name="Upload_img" accept="pdf/*" required /></div>
+  <div class="avatar"><label>Select file: </label><input type="file" name="file" accept=".pdf" required /></div>
    <a href="/" class="button">Reserved</a> 
   </form>
 </div>
