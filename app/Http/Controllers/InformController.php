@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ReportController extends Controller
+class InformController extends Controller
 {
     public function index() {
         return view('Client/Inform/inform-main');

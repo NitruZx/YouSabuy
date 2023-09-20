@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\InformController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReserveController;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RepairRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,6 @@ Route::get('/dashboard', function () {
 Route::get('/inform/report', function () {
     return view('/Client/Inform/report');
 });
-Route::get('/inform/repair-rq', function () {
-    return view('/Client/Inform/repair-request');
-});
 Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
@@ -48,7 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/paymentlist', [PaymentController::class, 'show'])->name('payment');
     Route::get('reserve', [ReserveController::class, 'index']);
     Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
-    Route::get('/inform', [ReportController::class, 'index'])->name('inform');
+    Route::get('/inform', [InformController::class, 'index'])->name('inform');
+    Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/test', function () {
         return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
@@ -61,5 +60,6 @@ Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')-
 Route::post('addinfo', [ReserveController::class, 'addinfo']);
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
+
 
 require __DIR__.'/auth.php';

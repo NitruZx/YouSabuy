@@ -26,7 +26,7 @@
 ></script>
 </head>
 <body>
-<table class="table align-middle mb-0 bg-white">
+    <table class="table table-striped">
   <thead class="bg-light">
     <tr>
         <th>Report No.</th>
@@ -37,12 +37,25 @@
         <th>Repair report</th>
         <th>ผู้รับแจ้ง</th>
         <th>Status</th>
-        <th>Actions</th>
     </tr>
-    @foreach( $ตัวแปรมึงอะ as $ตัวแปรมึงอะ)
+    @foreach( $reports as $report)
         <tr>
-            <td></td>
+            <td>{{ $report->id}}</td>
+            <td>{{ $report->date}}</td>
+            <td>{{ $report->name}}</td>
+            <td>{{ $report->room}}</td>
+            <td>{{ $report->tel}}</td>
+            <td>{{ $report->description}}</td>
+            <td>{{ $report->receiver}}</td>
+            <td>
+            @if ($report->status === 'finished')
+              <span class="badge badge-success rounded-pill d-inline">finished</span>
+            @elseif ( $report->status === 'unfinished')
+              <span class="badge rounded-pill badge-danger">unfinished</span>
+            @endif
+            </td>
         </tr>
+    @endforeach
   </thead>
 </table>
 </body>
