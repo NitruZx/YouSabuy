@@ -79,7 +79,7 @@
                               <td>{{ $data->paydate}}</td>
                               @elseif ( $data->status === 'unpaid')
                               <td>
-                                <a href = "{{route('payment.checkout')}}" class="btn btn-info">ชำระเงิน</a>
+                                <a href = "" class="btn btn-info">ชำระเงิน</a>
                                 {{-- <form action = "{{route('payment.checkout')}}" method="post">
                                     <input type="submit" value="ไปชำระเงิน" class="btn btn-info" />
                                 </form> --}}
