@@ -9,7 +9,7 @@ class PaymentController extends Controller
 {
     public function show(Request $request) {
         $datas = (new PaymentService())->selectPayment();
-        return view('Client/paymentlist', compact('datas'));
+        return view('Client/payment/paymentlist', compact('datas'));
      }
  
     //  public function checkout() {
