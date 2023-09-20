@@ -19,7 +19,7 @@ use App\Http\Controllers\RepairRequestController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/roomdetail', function () {
@@ -53,7 +53,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
+Route::get('/payment', function(){
+    return view('payment');
+});
 Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo']);
 
