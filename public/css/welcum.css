@@ -1,0 +1,281 @@
+body {
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  @media (max-width: 1000px) {
+    #mainNav {
+      float: left;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+    #mainNav li {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    /* #mainSection h2,
+    section2 h2,
+    section3 h2 {
+      font-size: 1.8em;
+    } */
+    #mobileSection {
+      display: block;
+      position: absolute;
+      background-color: white;
+    }
+    #mobileSection {
+      visibility: visible;
+    }
+    nav {
+      display: none;
+    }
+    /* #mainSection {
+      padding-top: 100px;
+    } */
+  }
+  
+  #logIn {
+    display: none;
+  }
+  
+  #mobileSection {
+    display: none;
+    background-color: white;
+  }
+  
+  header {
+    background-image: url(https://www.bogtui.com/wp-content/uploads/2021/06/19112019_10003-1536x1024.jpg);
+    background-attachment: fixed;
+  }
+  
+  nav {
+    background: -moz-linear-gradient(top, rgb(145, 79, 142) 0%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 34, 34, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+    /* IE6-9 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  #title {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+  }
+   /* พวกอีตัวเลือกข้างบน */
+  nav a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #ffffff;
+    transition: .5s;
+  }
+  
+  nav a:hover {
+    color: rgb(255, 255, 255);
+  }
+  /* ปุ่มlogin */
+  #openRooms {
+    font-size: 1em;
+    color: white;
+    background-color: #03b703;
+    margin-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 1px solid #03b703;
+    border-radius: 15px;
+    transition: .5s;
+  }
+  
+  #openRooms:hover {
+    color: #03b703;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid white;
+    border-radius: 15px;
+  }
+  /* ปุ่มlogin */
+  nav p {
+    float: right;
+    margin-top: 20px;
+  }
+   /* พวกอีตัวเลือกข้างบน */
+  nav ul {
+    margin-left:17%;
+    margin-right: 25%;
+  }
+  
+  nav li {
+    margin-right: 4%;
+    display: inline-block;;
+  }
+  
+  /* ตรงwelcome */
+  .slideSection {
+    color: rgb(255, 255, 255);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#80000000', GradientType=0);
+    /* IE6-9 */
+    padding-top: 150px;
+    padding-bottom: 375px;
+    padding-left: 20%;
+  }
+  
+  .slideSection h2 {
+    font-size: 4em;
+  } 
+  
+  .slidesection p {
+    font-size: 2em;
+    font-weight: 100;
+  }
+  
+  /* .placeToGo {
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    transition: .5s;
+  }
+  
+  .placeToGo:hover {
+    background-color: gray;
+    color: white;
+  }
+  
+  /* .placeToGo h3 {
+    font-size:3em;
+  } */ 
+  
+  /* .placeToGo p {
+    font-size: 3em;
+    font-weight: 100;
+  }  
+  
+  /* 
+  #travelSection h2 {
+    font-weight: 100;
+    font-size: 2em;
+    border-bottom: 1px solid #ffffff;
+    margin-top: 0%;
+    margin-left: 3%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }  */
+  
+  /* #forms {
+    background-color: #e11818;
+    display: block;
+    float: left;
+    padding-left: 30%;
+    padding-right: 60%;
+  } */
+  
+  /* #forms input[type="text"],
+  #forms input[type="email"],
+  #forms textarea {
+    margin-bottom: 25px;
+    padding: 3%;
+    font-family: 'Lato', helvetica, sans-serif;
+    font-weight: 200;
+  } */
+  
+  /* .form-style-6 {
+    font: 95% Arial, Helvetica, sans-serif;
+    padding-top: 50px;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-bottom: 50px;
+    background: #F7F7F7;
+    display: block;
+    float: left;
+  } */
+  
+  /* .form-style-6 h3 {
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 2em;
+    font-family: 'Lato';
+    font-weight: 200;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+    border-bottom: 5px solid #30C29E;
+  } */
+  
+  /* .form-style-6 input[type="text"],
+  .form-style-6 input[type="date"],
+  .form-style-6 input[type="datetime"],
+  .form-style-6 input[type="email"],
+  .form-style-6 input[type="number"],
+  .form-style-6 input[type="search"],
+  .form-style-6 input[type="time"],
+  .form-style-6 input[type="url"],
+  .form-style-6 textarea,
+  .form-style-6 select,
+  .form-style-6 input[type="password"] {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+  } */
+  
+  /* .form-style-6 input[type="text"]:focus,
+  .form-style-6 input[type="date"]:focus,
+  .form-style-6 input[type="datetime"]:focus,
+  .form-style-6 input[type="email"]:focus,
+  .form-style-6 input[type="number"]:focus,
+  .form-style-6 input[type="search"]:focus,
+  .form-style-6 input[type="time"]:focus,
+  .form-style-6 input[type="url"]:focus,
+  .form-style-6 textarea:focus,
+  .form-style-6 select:focus,
+  .form-style-6 input[type="password"]:focus {
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+  } */
+  
+  /* .form-style-6 input[type="submit"],
+  .form-style-6 input[type="button"] {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #08785e;
+    border-bottom: 5px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+  } */
+  
+  /* .form-style-6 input[type="submit"]:hover,
+  .form-style-6 input[type="button"]:hover {
+    background: #2EBC99;
+  } */

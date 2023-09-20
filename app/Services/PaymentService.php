@@ -2,14 +2,19 @@
 namespace App\Services;
 
 use app\Models\Utility_Usage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentService {
 
-    // private function selectDB() {
-    //     $data['utility_usages'] = Utility_Usage::
-    // }
+    public function selectPayment() {
+        $datas = DB::table('payments')->where('user_id', Auth::user()->id)->get();
+        return $datas;
+    }
 
-    public function getTotal(int $waterbill, int $electricbill) {
-
+    public function getTotal(string $date) {
+        $datas = DB::table('payments')->where('user_id', Auth::user()->id)
+                                    ->where('', )
+                                    ->get();//I can't bro
     }
 }
