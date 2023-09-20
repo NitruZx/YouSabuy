@@ -33,22 +33,14 @@ h1 {
   margin-bottom: 10px;
 }
 
-.center {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+html{
+  background-color: #ffffff;
 }
 
 .testbox {
-  /* margin: 20px auto; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -175px;
+  margin: 20px auto;
   width: 343px; 
-  height: 560px; 
+  height: 550px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -190,4 +182,6 @@ input[type=password]{
   -webkit-box-shadow: none; 
   -moz-box-shadow: none; 
   box-shadow: none;
+  
 }
+

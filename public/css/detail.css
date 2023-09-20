@@ -1,4 +1,5 @@
 
+
 /* Please ❤ this if you like it! */
 
 
@@ -75,12 +76,11 @@
      text-align: right;
      font-size: 20px;
      line-height: 1;
-     color: rgb(158, 158, 158);
+     color: rgb(255, 255, 255);
      font-weight: 700;
     letter-spacing: 1px;
      z-index: 2;
-   opacity: 0.5
-   ;
+   opacity: 0.5;
  }
  /* รูปปกหลัง อีที่มันเคลื่อนๆได้*/
  .navbar {
@@ -132,7 +132,7 @@
      font-weight: 700;
      line-height: 1.15;
      letter-spacing: 1px;
-     color: rgb(187, 187, 187);
+     color: rgba(255, 255, 255, 0.3);
      text-decoration: none;
      -webkit-writing-mode: vertical-lr;
      writing-mode: vertical-lr;
@@ -159,19 +159,13 @@
      transition: all 200ms linear; 
  }	
  .case-study-wrapper .case-study-name:nth-child(2) a:before {
-     background: linear-gradient(45deg, #0947db, #07d8ce);
+     background: linear-gradient(45deg, #0947db, #07d89d);
  }
  .case-study-wrapper .case-study-name:nth-child(3) a:before {
-     background: linear-gradient(45deg, #07d89d, #5ee83b);
+     background: linear-gradient(45deg, #ee2d29, #f8ae2c);
  }
  .case-study-wrapper .case-study-name:nth-child(4) a:before {
-     background: linear-gradient(45deg, #ff8f20, #f8ff32);
- }
- .case-study-wrapper .case-study-name:nth-child(5) a:before {
-     background: linear-gradient(45deg, #ff74a0, #ff7c3b);
- }
- .case-study-wrapper .case-study-name:nth-child(6) a:before {
-     background: linear-gradient(45deg, #a200ff, #ff008c);
+     background: linear-gradient(45deg, #0947db, #07d89d);
  }
  .case-study-wrapper .case-study-name.active a:before {
      height: 100%;
@@ -223,7 +217,7 @@
      font-size: 13px;
      line-height: 1;
      letter-spacing: 1px;
-     color: rgb(172, 171, 171);
+     color: #fff;
      font-weight: 300;
      margin: 0;
      padding: 5px 10px;
@@ -249,7 +243,7 @@
      text-transform: uppercase;
      line-height: 28px;
      letter-spacing: 2px;
-     color: rgb(255, 255, 255);
+     color: #fff;
      font-weight: 300;
      position: absolute;
      right: 20px;
