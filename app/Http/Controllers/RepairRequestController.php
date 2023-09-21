@@ -10,6 +10,6 @@ class RepairRequestController extends Controller
 {
     public function index() {
         $reports = DB::table('repair_requests')->where('name', Auth::user()->name)->get();
-        return view('Client/Inform/report', compact('reports'));
+        return view('Client/Inform/repair-request', compact('reports'));
     }
 }

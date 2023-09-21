@@ -31,29 +31,15 @@
     <tr>
         <th>Report No.</th>
         <th>Date</th>
-        <th>Name</th>
         <th>Room</th>
-        <th>Tel.</th>
-        <th>Repair report</th>
-        <th>ผู้รับแจ้ง</th>
-        <th>Status</th>
+        <th>Details</th>
     </tr>
     @foreach( $reports as $report)
         <tr>
             <td>{{ $report->id}}</td>
-            <td>{{ $report->date}}</td>
-            <td>{{ $report->name}}</td>
-            <td>{{ $report->room}}</td>
-            <td>{{ $report->tel}}</td>
-            <td>{{ $report->description}}</td>
-            <td>{{ $report->receiver}}</td>
-            <td>
-            @if ($report->status === 'finished')
-              <span class="badge badge-success rounded-pill d-inline">finished</span>
-            @elseif ( $report->status === 'unfinished')
-              <span class="badge rounded-pill badge-danger">unfinished</span>
-            @endif
-            </td>
+            <td>{{ $report->created_at}}</td>
+            <td>{{ $report->room_id}}</td>
+            <td>{{ $report->details}}</td>
         </tr>
     @endforeach
   </thead>
