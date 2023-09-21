@@ -27,7 +27,7 @@
 </head>
 <body>
     <table class="table table-striped">
-  <thead class="bg-light">
+  <thead class="table-dark">
     <tr>
         <th>Report No.</th>
         <th>Date</th>
@@ -38,7 +38,7 @@
         <th>Status</th>
     </tr>
     @foreach( $reports as $report)
-        <tr>
+    <tbody>
             <td>{{ $report->id}}</td>
             <td>{{ $report->date}}</td>
             <td>{{ $report->room}}</td>
@@ -52,7 +52,7 @@
               <span class="badge rounded-pill badge-danger">unfinished</span>
             @endif
             </td>
-        </tr>
+    </tbody>
     @endforeach
   </thead>
 </table>

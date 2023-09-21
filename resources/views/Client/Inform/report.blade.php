@@ -27,7 +27,7 @@
 </head>
 <body>
     <table class="table table-striped">
-  <thead class="bg-light">
+  <thead class="table-dark">
     <tr>
         <th>Report No.</th>
         <th>Date</th>
@@ -35,12 +35,12 @@
         <th>Details</th>
     </tr>
     @foreach( $reports as $report)
-        <tr>
+    <tbody>
             <td>{{ $report->id}}</td>
             <td>{{ $report->created_at}}</td>
             <td>{{ $report->room_id}}</td>
             <td>{{ $report->details}}</td>
-        </tr>
+    </tbody>
     @endforeach
   </thead>
 </table>

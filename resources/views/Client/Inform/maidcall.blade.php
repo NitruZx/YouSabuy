@@ -27,7 +27,7 @@
 </head>
 <body>
     <table class="table table-striped">
-  <thead class="bg-light">
+  <thead class="table-dark">
     <tr>
         <th>Report No.</th>
         <th>Room</th>
@@ -37,13 +37,13 @@
         <th>Status</th>
     </tr>
     @foreach( $reports as $report)
-        <tr>
+    <tbody>
             <td>{{ $report->id}}</td>
             <td>{{ $report->room_id}}</td>
             <td>{{ $report->created_at}}</td>
             <td>{{ $report->clean_date}}</td>
             <td>{{ $report->maid_id}}</td>
-            <td>{{ $report->status}}</td>
+            {{-- <td>{{ $report->status}}</td> --}}
             <td>
                 @if ($report->status === 'clean')
                   <span class="badge badge-success rounded-pill d-inline">clean</span>
@@ -51,7 +51,7 @@
                   <span class="badge rounded-pill badge-danger">unclean</span>
                 @endif
                 </td>
-        </tr>
+    </tbody>
     @endforeach
   </thead>
 </table>
