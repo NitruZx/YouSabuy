@@ -1,7 +1,6 @@
 <?php
 namespace App\Services;
 
-use app\Models\Utility_Usage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RepairRequestController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
+// Route::get('/history', function() {
+//     return view('history');
+// });
+
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
 })->name('roomdetail');
@@ -34,7 +39,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::post('/paymentlist/paying', function (Request $request) {
+    $value = $request->totalPrice;
+    return view('/Client/payment/omise/checkout')->with('total', $value);
+})->name('paying');
 
 Route::get('/inform/report', function () {
     return view('/Client/Inform/report');
@@ -42,6 +50,10 @@ Route::get('/inform/report', function () {
 Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
+
+// Route::post('/checking', [])
+
+Route::post('/paymentlist/omise', [PaymentController::class, 'checkout'])->name('createpayment');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

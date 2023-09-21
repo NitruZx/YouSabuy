@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 use function PHPUnit\Framework\returnSelf;
 // use app\Models\Reservation;
 
@@ -23,17 +24,23 @@ class ReserveController extends Controller
             'room' => 'required',
             'phone' => 'required|digits:10'    
         ]);
-        $reservation = new Reservation;
-        $reservation->Fname = $request->input('fname');
-        $reservation->Lname = $request->input('lname');
-        $reservation->Email = $request->input('email');
-        $reservation->Checkin_Date = $request->input('datecheckin');
-        $reservation->Checkout_Date = $request->input('datecheckout');
-        $reservation->User_ID = $request->input('room');
-        $reservation->Room = $request->input('room');
-        $reservation->phone_number = $request->input('phone');
-        $reservation->save();
-        return redirect()->route('dashboard');
+        
+        if (Room::where('room_id', '=', $request->input('room'))->exists()) {
+            if ($this->updateRoomStatus($request->input('room'))) {
+                $reservation = new Reservation;
+                $reservation->Fname = $request->input('fname');
+                $reservation->Lname = $request->input('lname');
+                $reservation->Email = $request->input('email');
+                $reservation->Checkin_Date = $request->input('datecheckin');
+                $reservation->Checkout_Date = $request->input('datecheckout');
+                $reservation->User_ID = Auth::user()->id;
+                $reservation->Room = $request->input('room');
+                $reservation->phone_number = $request->input('phone');
+                $reservation->save();
+                return redirect()->route('roomdetail');
+            }
+        }
+        return redirect()->route('reservepage');
     }
     public function upload(Request $request)
     {
@@ -49,4 +56,10 @@ class ReserveController extends Controller
         }
     }
     
+    private function updateRoomStatus($roomid) {
+        $affected = DB::table('rooms')
+              ->where('room_id', $roomid)
+              ->update(['status' => 'unavailable']);
+        return $affected;
+    }
 }

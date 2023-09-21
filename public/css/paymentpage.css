@@ -1,0 +1,11 @@
+/* Default table styles for this demo */
+table {
+    text-align: center;
+}
+table th, table td {
+    padding: 10px 20px;
+}
+/* Simple CSS for scrollable table on mobile */
+/* table {
+    min-width: 800px;
+} */

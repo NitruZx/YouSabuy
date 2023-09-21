@@ -33,7 +33,7 @@
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
 ></script>
-<link rel="stylesheet" href="{{ asset('css/paymenttable.css')}}">
+<link rel="stylesheet" href="{{ asset('css/paymentpage.css')}}">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -79,12 +79,14 @@
                               <td>{{ $data->paydate}}</td>
                               @elseif ( $data->status === 'unpaid')
                               <td>
-                                <a href = "" class="btn btn-info">ชำระเงิน</a>
-                                {{-- <form action = "{{route('payment.checkout')}}" method="post">
-                                    <input type="submit" value="ไปชำระเงิน" class="btn btn-info" />
-                                </form> --}}
+                                {{-- <a href = "" class="btn btn-info">ชำระเงิน</a> --}}
+                                <form action = "{{route('createpayment')}}" method="post">
+                                  @csrf
+                                    <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}">
+                                    <input type="submit" value="ไปชำระเงิน" class="btn btn-info btn-rounded" />
+                                </form>
                                 </td>   
-                              <td>ยังไม่ได้ชำระเงิน</td>
+                              <td>---</td>
                               @endif
                           </tr>
                       @endforeach
@@ -93,11 +95,36 @@
             </div>
             </main>
         </div>
-        {{-- @if ($message = Session::get('check'))
-          {{$message}}
-        @endif --}}
-        {{-- @if (0)
-            @include('Client.payment.omise.checkout-page');
-        @endif --}}
+        @if ($message = Session::get('check'))
+          {{-- @include('Client.payment.omise.paypage'); --}}
+          {{$total = Session::get('total')}}
+          {{-- @include('Client.payment.omise.checkout') --}}
+          <style>
+            .omise-checkout-button{
+              display: none;
+            }
+        </style>
+            <div class="form">
+              
+              <form name="checkoutForm" method="POST" action="{{route('paying')}}">
+                @csrf
+                <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                        data-key="pkey_test_5x5y20p7x8ck664erv7"
+                        data-image="https://cdn.omise.co/assets/dashboard/images/omise-logo.png"
+                        data-amount="{{$total}}00"
+                        data-currency="thb"
+                        data-button-label="Pay now"
+                        data-frame-label="Example 1"
+                        data-submit-label="Checkout"
+                  data-other-payment-methods="promptpay">
+                </script>
+                <input type="hidden" id="totalPrice" name="totalPrice" value="{{$total}}">
+              </form>
+        <script>
+            document.querySelector('.omise-checkout-button').click()
+        </script>
+        @endif
+        
+            
     </body>
 </html>
