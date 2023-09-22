@@ -71,8 +71,8 @@
                               <td>{{ $data->water_bill}}</td>
                               <td>{{ $data->electric_bill}}</td>
                               <td>{{ $data->charge}}</td>
-                              <td>4000</td>
-                              <td>{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}</td>
+                              <td>{{$data->monthly_price}}</td>
+                              <td>{{$data->water_bill + $data->electric_bill + $data->charge + $data->monthly_price}}</td>
                               @if ($data->status === 'paid')
                               <td>
                                 <span class="badge badge-success rounded-pill d-inline">ชำระเงินแล้ว</span></td>
@@ -82,7 +82,10 @@
                                 {{-- <a href = "" class="btn btn-info">ชำระเงิน</a> --}}
                                 <form action = "{{route('createpayment')}}" method="post">
                                   @csrf
-                                    <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}">
+                                    {{-- <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}"> --}}
+                                    <input type="hidden" name="bill_id" value="{{$data->id}}" />
+                                    <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->charge}}" />
+                                    <input type="hidden" name="room_id" value="{{$data->room_id}}" />
                                     <input type="submit" value="ไปชำระเงิน" class="btn btn-info btn-rounded" />
                                 </form>
                                 </td>   
