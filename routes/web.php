@@ -53,7 +53,9 @@ Route::get('/inform/maidcall', function () {
 
 // Route::post('/checking', [])
 
-Route::post('/paymentlist/omise', [PaymentController::class, 'checkout'])->name('createpayment');
+Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');
+Route::get('/paymentlist/success', [PaymentController::class, 'success'])->name('checkout.success');
+Route::get('/paymentlist/cancel', [PaymentController::class, 'cancel'])->name('checkout.cancel');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
