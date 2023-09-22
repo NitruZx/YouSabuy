@@ -24,9 +24,9 @@ class ReserveController extends Controller
             'room' => 'required',
             'phone' => 'required|digits:10'    
         ]);
-        
-        if (Room::where('room_id', '=', $request->input('room'))->exists()) {
-            if ($this->updateRoomStatus($request->input('room'))) {
+        $room = Room::where('room_id', '=', $request->input('room'));
+        if ($room->exists()) {
+            if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
                 $reservation = new Reservation;
                 $reservation->Fname = $request->input('fname');
                 $reservation->Lname = $request->input('lname');
