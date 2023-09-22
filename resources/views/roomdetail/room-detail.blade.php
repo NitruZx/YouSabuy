@@ -13,10 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script src="
-https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
-">
-</script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 	<link rel="stylesheet" href="{{ asset('css/detail.css')}}">
     </head>
     <body class="font-sans antialiased">
@@ -24,6 +21,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
             <div class="navbar">
 				@include('layouts.navigation')
 			</div>
+
 	<div class="section">
 		<div class="moving-image"></div>
 		<div class="shadow-title">YouSabuyMansion</div>
@@ -50,7 +48,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 
 		<ul class="case-study-images">
 			<li>
-				<img src="https://www.bogtui.com/wp-content/uploads/2021/06/18112019_9797-1536x1004.jpg" alt="">          	
+				<img src="assets/image/bedroom.jpg" alt="">          	
 				<p>bedroom</p>
 				<div class="info">
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
@@ -62,7 +60,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 				</div>
 			</li>
 			<li>
-				<img src="https://www.bogtui.com/wp-content/uploads/2021/06/Restroom.jpg" alt="">       	
+				<img src="assets/image/bathroom.jpg" alt="">       	
 				<p>bathroom</p>
 				<div class="info">
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
@@ -74,7 +72,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 				</div>
 			</li>
 			<li>
-				<img src="https://www.bogtui.com/wp-content/uploads/2021/06/balcony.jpg" alt="">       	
+				<img src="assets/image/balcony.jpg" alt="">       	
 				<p>balcony</p>
 				<div class="info">	
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
@@ -86,7 +84,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 				</div>
 			</li>
 			<li>
-				<img src="https://www.bogtui.com/wp-content/uploads/2021/06/washing_machine.jpg" alt="">       	
+				<img src="assets/image/laundry.jpg" alt="">       	
 				<p>laundry</p>
 				<div class="info">
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
@@ -98,7 +96,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
 				</div>
 			</li>
 			<li>
-				<img src="https://www.bogtui.com/wp-content/uploads/2021/06/18112019_9896-1536x1012.jpg" alt="">          	
+				<img src="assets/image/living.jpg" alt="">          	
 				<p>overview</p>
 				<div class="info">
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	

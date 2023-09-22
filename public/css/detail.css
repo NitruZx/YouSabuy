@@ -88,7 +88,7 @@
  }
 
  .moving-image { 
-     background: url('https://www.bogtui.com/wp-content/uploads/2021/06/19112019_10003-1536x1024.jpg') repeat fixed;
+     background: url('assets/image/bg.jpg') repeat fixed;
      background-size: cover;
      position: absolute;
      /* margin-top: 65px; */

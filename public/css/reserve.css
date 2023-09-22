@@ -9,7 +9,6 @@ ol, ul, li {list-style:none}
 
 :focus {outline:none}
 
-body,
 input,
 textarea,
 select {
@@ -31,10 +30,6 @@ h1 {
   text-align: center;
   padding-top: 10px;
   margin-bottom: 10px;
-}
-
-html{
-  background-color: #ffffff;
 }
 
 .testbox {
