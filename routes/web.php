@@ -6,7 +6,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RepairRequestController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\MaidCallController;
 use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload', 'App\Http\Controllers\FileController@upload')->name('upload.file');
     Route::get('/inform', [InformController::class, 'index'])->name('inform');
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
+    Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
+    Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
     Route::get('/test', function () {
         return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
