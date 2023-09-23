@@ -23,16 +23,16 @@
     @csrf
   <hr>
   <label id="icon" for="fname"><i class="icon-user"></i></label>
-  <input type="text" name="fname" id="fname" placeholder="FirstName"/>
+  <input type="text" name="fname" id="fname" value="{{Auth::user()->firstname}}" placeholder="FirstName"/>
   
   <label id="icon" for="lname"><i class="icon-user"></i></label>
-  <input type="text" name="lname" id="lname" placeholder="Last Name"/>
+  <input type="text" name="lname" id="lname" value="{{Auth::user()->lastname}}" placeholder="Last Name"/>
   
   <div>
     <label id="icon" for="phone"><i class="icon-phone "></i></label>
-    <input type="text" name="phone" id="phone" placeholder="Tel.">
+    <input type="text" name="phone" id="phone" value="{{Auth::user()->tel}}" placeholder="Tel.">
     <label id="icon" for="email"><i class="icon-envelope "></i></label>
-    <input type="text" name="email" id="email" placeholder="Email">
+    <input type="text" name="email" id="email" value="{{Auth::user()->email}}" placeholder="Email">
   </div>
   <div class="datetime">
     <label for="datetime">Choose Date(in):</label>
@@ -43,7 +43,7 @@
   <input type="text" name="bankaccount" id="name" placeholder="Bank Account" />
   <hr
   <label for="Room_id">Choose your room:</label>
-  <select id="Room_id">
+  <select id="Room_id" name="room">
     <option value="A101">A101</option>
     <option value="A102">A102</option>
     <option value="A103">A103</option>

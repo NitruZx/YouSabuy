@@ -9,17 +9,12 @@ class PaymentService {
     public function selectPayment() {
         $datas = DB::table('payments')
         ->join('rooms', 'payments.room_id', '=', 'rooms.room_id')
-        ->select('payments.*', 'rooms.monthly_price')
+        ->join('room_types', 'rooms.type', '=', 'room_types.type')
+        ->select('payments.*', 'room_types.monthly_price')
         ->where('user_id', Auth::user()->id)
         ->get();
 
         // $datas = DB::table('payments')->where('user_id', Auth::user()->id)->get();
         return $datas;
-    }
-
-    public function getTotal(string $date) {
-        $datas = DB::table('payments')->where('user_id', Auth::user()->id)
-                                    ->where('', )
-                                    ->get();//I can't bro
     }
 }

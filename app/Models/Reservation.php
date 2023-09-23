@@ -9,4 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
     const UPDATED_AT = null;
+    public $incrementing = false;
+    protected $table = 'reservations';
+    protected $primaryKey = ['room_id', 'user_id'];
 }
