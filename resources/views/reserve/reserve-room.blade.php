@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link  rel="stylesheet" href="{{ asset('css/reserve.css')}}">
+  
   <title>Reserve-Room</title>
   
 </head>
@@ -37,8 +38,6 @@
   <div class="datetime">
     <label for="datetime">Choose Date(in):</label>
     <input class="form-control calendar" type="date" name="datecheckin">
-    <label for="datetime">Choose Date(out):</label>
-    <input class="form-control calendar" type="date" name="datecheckout">
 
   <input type="text" name="bankaccount" id="name" placeholder="Bank Account" />
   <hr

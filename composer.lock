@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd748d19f474bba7f42d253ff8e7bce8",
+    "content-hash": "991c34688eabe2d4e32c0128838d2e63",
     "packages": [
         {
             "name": "brick/math",
@@ -3095,16 +3095,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v12.3.0",
+            "version": "v12.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "260aad072f92ddb05e03d47af13b3616d99b3444"
+                "reference": "7d0a90772fc1c179e370971264318208533324b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/260aad072f92ddb05e03d47af13b3616d99b3444",
-                "reference": "260aad072f92ddb05e03d47af13b3616d99b3444",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7d0a90772fc1c179e370971264318208533324b9",
+                "reference": "7d0a90772fc1c179e370971264318208533324b9",
                 "shasum": ""
             },
             "require": {
@@ -3117,8 +3117,12 @@
                 "friendsofphp/php-cs-fixer": "3.5.0",
                 "php-coveralls/php-coveralls": "^2.5",
                 "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0"
+<<<<<<< HEAD
+=======
                 "phpunit/phpunit": "^5.7 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.3"
+>>>>>>> 6974b5c81e2d94ca6444688a6c821afa95e1df5a
             },
             "type": "library",
             "extra": {
@@ -3150,9 +3154,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v12.3.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v12.4.0"
             },
-            "time": "2023-09-15T00:57:14+00:00"
+            "time": "2023-09-21T22:55:47+00:00"
         },
         {
             "name": "symfony/console",
