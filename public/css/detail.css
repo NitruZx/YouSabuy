@@ -88,7 +88,7 @@
  }
 
  .moving-image { 
-     background: url('assets/image/bg.jpg') repeat fixed;
+     background: url('../assets/image/bg.jpg') repeat fixed;
      background-size: cover;
      position: absolute;
      /* margin-top: 65px; */
@@ -132,7 +132,7 @@
      font-weight: 700;
      line-height: 1.15;
      letter-spacing: 1px;
-     color: rgba(255, 255, 255, 0.3);
+     color: rgba(0, 0, 0, 0.3);
      text-decoration: none;
      -webkit-writing-mode: vertical-lr;
      writing-mode: vertical-lr;

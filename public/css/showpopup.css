@@ -10,12 +10,17 @@
   transition: opacity 200ms;
   visibility: hidden;
   opacity: 0;
+} &.light {
+  background: rgba(255,255,255,0.5);
 }
-.overlay .cancel {
+.cancel {
   position: absolute;
   width: 100%;
   height: 100%;
   cursor: default;
+}&:target {
+  visibility: visible;
+  opacity: 1;
 }
 .overlay:target {
   visibility: visible;
@@ -24,13 +29,11 @@
 
 .popup {
   margin: 75px auto;
-  padding: 20px;
-  background: #fff;
-  border: 1px solid #666;
-  width: 300px;
+  background: rgb(55 65 81 / .5)  ;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 10;
+  padding: 30px;
 }
 .light .popup {
   border-color: #aaa;
