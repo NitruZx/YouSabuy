@@ -19,8 +19,10 @@ class PaymentController extends Controller
 
    public function checkout(Request $request)
    {
-      $data = DB::table('payments')->where('id', $request->bill_id)->first();
-      $room = DB::table('rooms')->where('room_id', $request->room_id)->first();
+      $data = DB::table('payments')->where('bill_id', $request->bill_id)->first();
+      $room = DB::table('rooms')
+               ->join('room_types', 'rooms.type', '=', 'room_types.type')
+               ->where('room_id', $request->room_id)->first();
       $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET_KEY'));
       $total = $room->monthly_price + $request->utility_price;
       $checkout_session = $stripe->checkout->sessions->create([
@@ -53,7 +55,7 @@ class PaymentController extends Controller
       // $status = $request->get('state');
       $bill_id = $request->bill_id;
       
-      $payment = Payment::where('id', $bill_id)->where('status', 'unpaid')->first();
+      $payment = Payment::where('bill_id', $bill_id)->where('status', 'unpaid')->first();
       if (!$payment) {
          throw new NotFoundHttpException();
       }

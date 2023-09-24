@@ -69,7 +69,7 @@
                     </thead>
                       @foreach( $datas as $data)
                           <tr>
-                              <td>{{ $data->id}}</td>
+                              <td>{{ $data->bill_id}}</td>
                               <td>{{ $data->water_bill}}</td>
                               <td>{{ $data->electric_bill}}</td>
                               <td>{{ $data->late_fee}}</td>
@@ -85,8 +85,8 @@
                                 <form action = "{{route('createpayment')}}" method="post">
                                   @csrf
                                     {{-- <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}"> --}}
-                                    <input type="hidden" name="bill_id" value="{{$data->id}}" />
-                                    <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->charge}}" />
+                                    <input type="hidden" name="bill_id" value="{{$data->bill_id}}" />
+                                    <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->late_fee}}" />
                                     <input type="hidden" name="room_id" value="{{$data->room_id}}" />
                                     <input type="submit" value="ไปชำระเงิน" class="btn btn-info btn-rounded" />
                                 </form>
