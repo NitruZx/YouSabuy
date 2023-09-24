@@ -11,7 +11,7 @@ class PaymentService {
         ->join('rooms', 'payments.room_id', '=', 'rooms.room_id')
         ->join('room_types', 'rooms.type', '=', 'room_types.type')
         ->select('payments.*', 'room_types.monthly_price')
-        ->where('user_id', Auth::user()->id)
+        ->where('tenant_id', Auth::user()->id)
         ->get();
 
         // $datas = DB::table('payments')->where('user_id', Auth::user()->id)->get();

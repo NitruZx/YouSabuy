@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Utility_Usage extends Model
+class Registration extends Model
 {
     use HasFactory;
-    
-    const CREATED_AT = 'Created_Date';
+    protected $primaryKey = ['room_id', 'client_id'];
+    public $incrementing = false;
     const UPDATED_AT = null;
 }

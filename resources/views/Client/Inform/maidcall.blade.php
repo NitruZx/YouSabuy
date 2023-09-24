@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
 ></script>
 </head>
-<body>
+<body> --}}
 
     <table class="table table-striped">
   <thead class="table-dark">
@@ -42,14 +42,13 @@
         <th>Maid ID</th>        
         <th>Status</th>
     </tr>
-    @foreach( $reports as $report)
+    {{-- @foreach( $reports as $report)
     <tbody>
             <td>{{ $report->id}}</td>
             <td>{{ $report->room_id}}</td>
             <td>{{ $report->created_at}}</td>
             <td>{{ $report->clean_date}}</td>
             <td>{{ $report->maid_id}}</td>
-            {{-- <td>{{ $report->status}}</td> --}}
             <td>
                 @if ($report->status === 'clean')
                   <span class="badge badge-success rounded-pill d-inline">clean</span>
@@ -58,8 +57,8 @@
                 @endif
                 </td>
     </tbody>
-    @endforeach
+    @endforeach --}}
   </thead>
-</table>
+{{-- </table>
 </body>
-</html>
+</html> --}}

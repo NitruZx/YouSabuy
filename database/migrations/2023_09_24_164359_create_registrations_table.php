@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('repair__requests', function (Blueprint $table) {
-            $table->bigIncrements('request_id');
+        Schema::create('registrations', function (Blueprint $table) {
+            $table->string('room_id', 5);
             $table->bigInteger('client_id');
-            $table->longText('description');
-            $table->string('technician_id');
-            $table->enum('status', ['finished', 'unfinished'])->default('finished');
+            $table->date('startdate');
+            $table->date('enddate');
+            $table->enum('reg_status', ['pending', 'accept'])->default('pending');
             $table->timestamp('created_at');
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('repair__requests');
+        Schema::dropIfExists('registrations');
     }
 };

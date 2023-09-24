@@ -20,27 +20,19 @@ class ReserveController extends Controller
         $request->validate([
             'room' => 'required',    
         ]);
-        $reservation = new Reservation;
+        $room = Room::where('room_id', '=', $request->input('room'))->first();
+        if ($room->exists()) {
+            if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
+                $reservation = new Reservation;
                 $reservation->checkin_date = $request->input('datecheckin');
                 $reservation->checkout_date = $this->addDateYear($request->input('datecheckin'), 1);
                 $reservation->user_id = Auth::user()->id;
                 $reservation->room_id = $request->room;
                 $reservation->save();
                 return redirect()->route('roomdetail');
-        // $room = Room::where('room_id', '=', $request->input('room'));
-        // if ($room->exists()) {
-        //     if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
-        //         $reservation = new Reservation;
-        //         $reservation->checkin_date = $request->input('datecheckin');
-        //         $checkout = (int)substr($request->input('datecheckin'), 0, 4)+1;
-        //         $reservation->checkout_date = "{$checkout}".substr($request->input('datecheckin'), 4);
-        //         $reservation->user_id = Auth::user()->id;
-        //         $reservation->room_id = "C888";
-        //         $reservation->save();
-        //         return redirect()->route('roomdetail');
-        //     }
-        // }
-        // return redirect()->route('reservepage');
+            }
+        }
+        return redirect()->route('reservepage');
     }
     public function upload(Request $request)
     {
