@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reserves', function (Blueprint $table) {
-            $table->dateTime('Checkin_Date');
-            $table->dateTime('Checkout_Date');
-            $table->bigInteger('User_ID');
+        Schema::create('usages', function (Blueprint $table) {
+            $table->bigIncrements('usage_id');
+            $table->string('room_id', 5);
+            $table->integer('water_units');
+            $table->integer('electric_units');
             $table->timestamp('created_at');
-            $table->string('Room');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reserves');
+        Schema::dropIfExists('usages');
     }
 };

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reserves', function (Blueprint $table) {
-            $table->dateTime('Checkin_Date');
-            $table->dateTime('Checkout_Date');
-            $table->bigInteger('User_ID');
+        Schema::create('registrations', function (Blueprint $table) {
+            $table->string('room_id', 5);
+            $table->bigInteger('client_id');
+            $table->date('startdate');
+            $table->date('enddate');
+            $table->enum('reg_status', ['pending', 'accept'])->default('pending');
             $table->timestamp('created_at');
-            $table->string('Room');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reserves');
+        Schema::dropIfExists('registrations');
     }
 };

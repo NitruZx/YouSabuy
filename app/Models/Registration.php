@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Repair_Request extends Model
+class Registration extends Model
 {
     use HasFactory;
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
+    protected $primaryKey = ['room_id', 'client_id'];
+    public $incrementing = false;
     const UPDATED_AT = null;
 }

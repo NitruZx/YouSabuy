@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Utility_Usage extends Model
+class Room_Type extends Model
 {
     use HasFactory;
-    
-    const CREATED_AT = 'Created_Date';
-    const UPDATED_AT = null;
+    public $timestamps = false;
+    protected $primaryKey = 'type';
 }

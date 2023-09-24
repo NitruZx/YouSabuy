@@ -12,15 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('repair__requests', function (Blueprint $table) {
-            $table->id();
-            $table->date('date');
-            $table->string('name');
-            $table->string('room');
-            $table->string('tel', 10);
+            $table->bigIncrements('request_id');
+            $table->bigInteger('client_id');
             $table->longText('description');
-            $table->string('receiver');
-            $table->string('status');
-            // $table->timestamps();
+            $table->string('technician_id');
+            $table->enum('status', ['finished', 'unfinished'])->default('finished');
+            $table->timestamp('created_at');
         });
     }
 
