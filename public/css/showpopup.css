@@ -29,11 +29,13 @@
 
 .popup {
   margin: 75px auto;
-  background: rgb(55 65 81 / .5)  ;
+  padding: 20px;
+
+  background-color: #fff;
+  width: 380px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 10;
-  padding: 30px;
 }
 .light .popup {
   border-color: #aaa;
