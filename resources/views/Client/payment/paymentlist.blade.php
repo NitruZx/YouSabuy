@@ -72,9 +72,9 @@
                               <td>{{ $data->id}}</td>
                               <td>{{ $data->water_bill}}</td>
                               <td>{{ $data->electric_bill}}</td>
-                              <td>{{ $data->charge}}</td>
+                              <td>{{ $data->late_fee}}</td>
                               <td>{{$data->monthly_price}}</td>
-                              <td>{{$data->water_bill + $data->electric_bill + $data->charge + $data->monthly_price}}</td>
+                              <td>{{$data->water_bill + $data->electric_bill + $data->late_fee+ $data->monthly_price}}</td>
                               @if ($data->status === 'paid')
                               <td>
                                 <span class="badge badge-success rounded-pill d-inline">ชำระเงินแล้ว</span></td>
