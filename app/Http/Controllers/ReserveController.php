@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
+use App\Models\Registration;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,12 +23,12 @@ class ReserveController extends Controller
         $room = Room::where('room_id', '=', $request->input('room'))->first();
         if ($room->exists()) {
             if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
-                $reservation = new Reservation;
-                $reservation->checkin_date = $request->input('datecheckin');
-                $reservation->checkout_date = $this->addDateYear($request->input('datecheckin'), 1);
-                $reservation->user_id = Auth::user()->id;
-                $reservation->room_id = $request->room;
-                $reservation->save();
+                $registration = new Registration;
+                $registration->startdate = $request->input('datecheckin');
+                $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
+                $registration->client_id = Auth::user()->id;
+                $registration->room_id = $request->room;
+                $registration->save();
                 return redirect()->route('roomdetail');
             }
         }
@@ -59,4 +59,6 @@ class ReserveController extends Controller
         $year = (int)substr($date, 0, 4)+$amount;
         return "{$year}".substr($date, 4);
     }
+    
+    
 }
