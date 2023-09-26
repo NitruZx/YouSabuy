@@ -78,7 +78,7 @@
                               @if ($data->status === 'paid')
                               <td>
                                 <span class="badge badge-success rounded-pill d-inline">ชำระเงินแล้ว</span></td>
-                              <td>{{ $data->paydate}}</td>
+                              <td>{{ $data->checkout_date}}</td>
                               @elseif ( $data->status === 'unpaid')
                               <td>
                                 {{-- <a href = "" class="btn btn-info">ชำระเงิน</a> --}}

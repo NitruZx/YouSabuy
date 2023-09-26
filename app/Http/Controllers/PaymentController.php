@@ -60,10 +60,10 @@ class PaymentController extends Controller
          throw new NotFoundHttpException();
       }
       $todayDate = date("Y-m-d");
-      $payment->status = 'paid';
-      $payment->paydate = $todayDate;
-      $payment->save();
-      return redirect()->back();
+      $update = DB::table('payments')->where('bill_id', $bill_id)->update(['status' => 'paid', 'checkout_date' => $todayDate]);
+      if ($update) {
+         return redirect()->back();
+      }
       // try{
       //    $session = \Stripe\Checkout\Session::retrieve($sessionId);
       //    if (!$session) {
