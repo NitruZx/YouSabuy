@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
-Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('addinfo');
+Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reserve.addinfo');
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
