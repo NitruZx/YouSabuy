@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use App\Models\Room;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -59,8 +60,11 @@ class ReserveController extends Controller
     }
 
     private function addDateYear($date, $amount) {
-        $year = (int)substr($date, 0, 4)+$amount;
-        return "{$year}".substr($date, 4);
+        // $year = (int)substr($date, 0, 4)+$amount;
+        // return "{$year}".substr($date, 4);
+        $startdate = Carbon::parse($date);
+        $enddate = $startdate->addYears($amount);
+        return $enddate;
     }
 
     private function checkReg() {

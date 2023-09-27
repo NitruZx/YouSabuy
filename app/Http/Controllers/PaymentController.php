@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Services\PaymentService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -13,7 +14,10 @@ class PaymentController extends Controller
 {
    public function show(Request $request)
    {
-      $datas = (new PaymentService())->selectPayment();
+      $service = new PaymentService();
+      $datas = $service->selectPayment();
+      // $duedate = $service->latefeeCal();
+      // dd($datas);
       return view('Client/payment/paymentlist', compact('datas'));
    }
 

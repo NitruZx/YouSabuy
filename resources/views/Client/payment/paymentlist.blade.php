@@ -57,28 +57,36 @@
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="table-dark">
                       <tr>
-                          <th><b>ID</b></th>
-                          <th><b>ค่าน้ำ(บาท)</b></th>
-                          <th><b>ค่าไฟ(บาท)</b></th>
+                          <th><b>วันออกบิล</b></th>
+                          <th><b>วันครบกำหนด</b></th>
                           <th><b>ค่าปรับ(บาท)</b></th>
-                          <th><b>ค่าห้อง(บาท)</b></th>
-                          <th><b>ยอดเงินรวม</b></th>
+                          <th><b>ยอดเงินรวม(บาท)</b></th>
                           <th><b>สถานะ</b></th>
                           <th><b>วันที่ชำระ</b></th>
                       </tr>
                     </thead>
+                      @php
+                        $late_fee = 0;    
+                      @endphp
                       @foreach( $datas as $data)
                           <tr>
-                              <td>{{ $data->bill_id}}</td>
-                              <td>{{ $data->water_bill}}</td>
-                              <td>{{ $data->electric_bill}}</td>
-                              <td>{{ $data->late_fee}}</td>
-                              <td>{{$data->monthly_price}}</td>
-                              <td>{{$data->water_bill + $data->electric_bill + $data->late_fee+ $data->monthly_price}}</td>
+                              <td>{{ $data->monthbill}}</td>
+                              <td>{{ $data->due}}</td>
+                              <td>
+                              @if ($data->diff > 0)
+                                {{$data->diff * 100}}
+                                @php
+                                    $late_fee = $data->diff * 100;
+                                @endphp
+                              @else
+                                {{0}}
+                              @endif
+                              </td>
+                              <td>{{$data->water_bill + $data->electric_bill + $late_fee + $data->monthly_price}}</td>
                               @if ($data->status === 'paid')
                               <td>
                                 <span class="badge badge-success rounded-pill d-inline">ชำระเงินแล้ว</span></td>
-                              <td>{{ $data->checkout_date}}</td>
+                              <td>{{ $data->paiddate}}</td>
                               @elseif ( $data->status === 'unpaid')
                               <td>
                                 {{-- <a href = "" class="btn btn-info">ชำระเงิน</a> --}}
