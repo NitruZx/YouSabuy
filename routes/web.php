@@ -9,7 +9,7 @@ use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
 use Illuminate\Http\Request;
-
+use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/registration', function(){
+    return view('registration/registration');
+});
 // Route::get('/history', function() {
 //     return view('history');
 // });

@@ -209,7 +209,7 @@
      height: auto;
      display: block;
  }
- .case-study-images li p {
+ .case-study-images li p{
      position: absolute;
      top: 20px;
      left: 20px; 

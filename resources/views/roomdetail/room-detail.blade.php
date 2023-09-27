@@ -26,14 +26,6 @@
             <div class="navbar">
 				@include('layouts.navigation')
 			</div>
-
-			<div id="popup_reserve" class="overlay">
-				<a class="cancel" href="#"></a>
-				<div class="popup">	
-					@include('reserve.reserve-page')
-				</div>
-			</div>
-
 	<div class="section">
 		<div class="moving-image"></div>
 		<div class="shadow-title">YouSabuyMansion</div>
@@ -51,10 +43,16 @@
 				<a href="#" class="hover-target">laundry</a>
 			</li>
 			<li class="case-study-name">                                         	
-				<a href="#" class="hover-target">overview</a>
+				<a href="#" class="hover-target">type1</a>
 			</li>
 			<li class="case-study-name">                                         	
-				<a href="#" class="hover-target">information</a>
+				<a href="#" class="hover-target">detail</a>
+			</li>
+			<li class="case-study-name">                                         	
+				<a href="#" class="hover-target">type2</a>
+			</li>
+			<li class="case-study-name">                                         	
+				<a href="#" class="hover-target">detail2</a>
 			</li>
 		</ul>
 
@@ -68,7 +66,7 @@
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve" class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 			<li>
@@ -80,7 +78,7 @@
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve" class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 			<li>
@@ -92,7 +90,7 @@
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve" class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 			<li>
@@ -104,19 +102,19 @@
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve" class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 			<li>
-				<img src="assets/image/living.jpg" alt="">          	
-				<p>overview</p>
+				<img src="assets/image/type1.jpg" alt="">          	
+				<p>type 1</p>
 				<div class="info">
 					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
 					<img src="https://ivang-design.com/svg-load/hotel/2.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve" class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 			<li>
@@ -128,7 +126,31 @@
 					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
 					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
-					<a href="#popup_reserve " class="hover-target">reserve</a>
+					<a href="/registration" class="hover-target">reserve</a>
+				</div>
+			</li>
+			<li>
+				<img src="assets/image/type2.jpg" alt="">          	
+				<p>type 2</p>
+				<div class="info">
+					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
+					<img src="https://ivang-design.com/svg-load/hotel/2.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
+					<a href="/registration" class="hover-target">reserve</a>
+				</div>
+			</li>
+			<li>
+				<img src="assets/image/detail2.jpg" alt="">          	
+				<p>information</p>
+				<div class="info">
+					<img src="https://ivang-design.com/svg-load/hotel/1.svg" alt=""> 	
+					<img src="https://ivang-design.com/svg-load/hotel/2.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/3.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/4.svg" alt=""> 
+					<img src="https://ivang-design.com/svg-load/hotel/6.svg" alt="">
+					<a href="/registration" class="hover-target">reserve</a>
 				</div>
 			</li>
 		</ul>				
@@ -223,6 +245,18 @@
 			$('.case-study-images li.show').removeClass("show");
 			$('.case-study-images li:nth-child(6)').addClass("show");
 			$('.case-study-name:nth-child(6	)').addClass('active');
+		})
+		$('.case-study-name:nth-child(7)').on('mouseenter', function() {
+			$('.case-study-name.active').removeClass('active');
+			$('.case-study-images li.show').removeClass("show");
+			$('.case-study-images li:nth-child(7)').addClass("show");
+			$('.case-study-name:nth-child(7)').addClass('active');
+		})
+		$('.case-study-name:nth-child(8)').on('mouseenter', function() {
+			$('.case-study-name.active').removeClass('active');
+			$('.case-study-images li.show').removeClass("show");
+			$('.case-study-images li:nth-child(8)').addClass("show");
+			$('.case-study-name:nth-child(8)').addClass('active');
 		})
 		$('.case-study-name:nth-child(1)').trigger('mouseenter')
 					

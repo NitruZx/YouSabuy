@@ -86,7 +86,7 @@ rel="stylesheet"
                         <a href="#popup1">
                             <div class="icons">
                                 <div class="icon-slide-container">
-                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="assets/image/admin.jpg">
+                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052356386916/contact.png">
                                 </div>
                             </div>
                         </a>
@@ -95,7 +95,8 @@ rel="stylesheet"
                         <a href="#popup1">
                             <div class="icons2">
                                 <div class="icon-slide-container">
-                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="assets/image/clean.jpg">
+                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="
+                                    https://cdn.discordapp.com/attachments/1051918929037119498/1155152052104724510/cleaning.png">
                                 </div>
                             </div>
                         </a>     
@@ -103,7 +104,7 @@ rel="stylesheet"
                         <a href="#popup1">
                             <div class="icons3">
                                 <div class="icon-slide-container">
-                                      <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="assets/image/repair.jpg">
+                                      <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052620632146/repair2.png">
                                 </div>
                             </div>
                         </a>
