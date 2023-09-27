@@ -53,10 +53,16 @@ rel="stylesheet"
                                     <p class="name">
                                       <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name"value="{{Auth::user()->firstname}}"/>
                                     </p>
-                                    
+                                    <p class="room">
+                                      <label >Room:</label>
+                                      <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}}"/>
+                                    </p>
+                                      
+
                                     <p class="text">
+                                      <label >ปัญหา:</label>
                                       <textarea name="reporttext" class="validate[required,length[6,300]] feedback-input" id="report-text" placeholder="Report text"></textarea>
-                                     
+                                    
                                     </p>
 
                                     <div class="submit">
@@ -76,9 +82,9 @@ rel="stylesheet"
                                   </p>
                                 
                                   <p class="datetime">
-                                    <label for="datetime">Choose Time:</label>
+                                    <label for="datetime">เลือกเวลาที่จะทำความสะอาด:</label>
                                     <input type="datetime-local" id="datetime" name="datetime">
-                                    <input type="submit" value="send" id="button">
+                                  
                                   </p>
                 
                                   <div class="submit">
@@ -98,8 +104,11 @@ rel="stylesheet"
                                   <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" name="fname" 
                                   id="name" value="{{Auth::user()->firstname}}" /> 
                                 </p>
-
+                                <label >Room:</label>
+                                <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}}"/>
+                                </p>
                                 <p class="text">
+                                  <label >อาการ/ปัญหา:</label>
                                   <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
                                 </p>
                               
