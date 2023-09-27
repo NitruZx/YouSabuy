@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
 
-    // Route::get('/infrom/{gettext}', [InformController::class,'getreport']);
+    // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
         return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
