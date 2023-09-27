@@ -57,6 +57,7 @@ Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
 
+
 // Route::post('/checking', [])
 
 Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');
@@ -74,6 +75,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
+
+    // Route::get('/infrom/{gettext}', [InformController::class,'getreport']);
     Route::get('/test', function () {
         return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });

@@ -14,4 +14,8 @@ class InformController extends Controller
         $calls = $inform->readInformTable('maid_calls', 'maid_id');
         return view('Client/Inform/inform-main', compact('reports', 'requests', 'calls'));
     }
+
+    public function getreport($gettext){
+
+    }
 }
