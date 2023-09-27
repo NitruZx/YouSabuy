@@ -45,40 +45,83 @@ rel="stylesheet"
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
+                    {{-- click 1 --}}
                     <div id="popup1" class="overlay">
                         <a class="cancel" href="#"></a>
                         <div class="popup">
                                   <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
                                     <p class="name">
-                                      <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" />
+                                      <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name"
+                                      value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}"/>
                                     </p>
-                                    
-                                    <p class="email">
-                                      <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+                                    <p class="room">
+                                      <label >Room: </label> <br/>
+                                      <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}} "/>
                                     </p>
-                                    
+                                      
+
                                     <p class="text">
-                                      <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+                                      <label >ปัญหา:</label>
+                                      <textarea name="reporttext" class="validate[required,length[6,300]] feedback-input" id="report-text" placeholder="Report text"></textarea>
+                                    
                                     </p>
-                                    <p class="datetime">
-                                      <label for="datetime">Choose Time:</label>
-                                      <input type="datetime-local" id="datetime" name="datetime">
-                                      <input type="submit" value="send" id="button">
-                                    </p>
-                            
+
                                     <div class="submit">
-                                      <input type="submit" value="SEND" id="button-blue"/>
+                                      <input type="submit" value="REPORT" id="button-blue"/>
                                       <div class="ease"></div>
                                     </div>
                           
                         </div>
                     </div>
+                    {{-- click 2--}}
+                    <div id="popup2" class="overlay">
+                      <a class="cancel" href="#"></a>
+                      <div class="popup">
+                                <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
+                                  <p class="name">
+                                    <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" 
+                                    value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}"/>
+                                  </p>
+                                
+                                  <p class="datetime">
+                                    <label for="datetime">เลือกเวลาที่จะทำความสะอาด:</label>
+                                    <input type="datetime-local" id="datetime" name="datetime">
+                                  
+                                  </p>
+                
+                                  <div class="submit">
+                                    <input type="submit" value="SEND" id="button-blue"/>
+                                    <div class="ease"></div>
+                                  </div>
+                        
+                      </div>
+                  </div>
+                  {{-- click 3--}}
 
-
-
-
-
+                  <div id="popup3" class="overlay">
+                    <a class="cancel" href="#"></a>
+                    <div class="popup">
+                              <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
+                                <p class="name">
+                                  <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" name="fname" 
+                                  id="name" value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}" /> 
+                                </p>
+                                <label >Room:</label> <br/>
+                                <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}}"/>
+                                
+                                </p>
+                                <p class="text">
+                                  <label >อาการ/ปัญหา:</label>
+                                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+                                </p>
+                              
+                                <div class="submit">
+                                  <input type="submit" value="SEND" id="button-blue"/>
+                                  <div class="ease"></div>
+                                </div>
+                      
+                    </div>
+                </div>
 
                     
               
@@ -86,25 +129,27 @@ rel="stylesheet"
                         <a href="#popup1">
                             <div class="icons">
                                 <div class="icon-slide-container">
-                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052356386916/contact.png">
+                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" 
+                                    src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052356386916/contact.png">
                                 </div>
                             </div>
                         </a>
                         
                         
-                        <a href="#popup1">
+                        <a href="#popup2">
                             <div class="icons2">
                                 <div class="icon-slide-container">
-                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="
-                                    https://cdn.discordapp.com/attachments/1051918929037119498/1155152052104724510/cleaning.png">
+                                    <img class="slide-icon"  alt="The Kite Map Logo" height="100" 
+                                    src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052104724510/cleaning.png">
                                 </div>
                             </div>
                         </a>     
             
-                        <a href="#popup1">
+                        <a href="#popup3">
                             <div class="icons3">
                                 <div class="icon-slide-container">
-                                      <img class="slide-icon"  alt="The Kite Map Logo" height="100" src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052620632146/repair2.png">
+                                      <img class="slide-icon"  alt="The Kite Map Logo" height="100" 
+                                      src="https://cdn.discordapp.com/attachments/1051918929037119498/1155152052620632146/repair2.png">
                                 </div>
                             </div>
                         </a>
