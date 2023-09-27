@@ -35,29 +35,27 @@
     <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-        <th>Report No.</th>
+        <th>Created At</th>
         <th>Room</th>
-        <th>Date</th>        
-        <th>Clean date</th>
-        <th>Maid ID</th>        
+        <th>Clean Date</th>        
+        <th>Maid Name</th>        
         <th>Status</th>
     </tr>
-    {{-- @foreach( $reports as $report)
+    @foreach( $calls as $call)
     <tbody>
-            <td>{{ $report->id}}</td>
-            <td>{{ $report->room_id}}</td>
-            <td>{{ $report->created_at}}</td>
-            <td>{{ $report->clean_date}}</td>
-            <td>{{ $report->maid_id}}</td>
+            <td>{{ $call->created_at}}</td>
+            <td>{{ $call->room_id}}</td>
+            <td>{{ $call->clean_date}}</td>
+            <td>{{ $call->fullname}}</td>
             <td>
-                @if ($report->status === 'clean')
-                  <span class="badge badge-success rounded-pill d-inline">clean</span>
-                @elseif ( $report->status === 'unclean')
-                  <span class="badge rounded-pill badge-danger">unclean</span>
+                @if ($call->status === 'finished')
+                  <span class="badge badge-success rounded-pill d-inline">cleaned</span>
+                @elseif ( $call->status === 'unfinished')
+                  <span class="badge rounded-pill badge-danger">unsuccess</span>
                 @endif
                 </td>
     </tbody>
-    @endforeach --}}
+    @endforeach
   </thead>
 {{-- </table>
 </body>

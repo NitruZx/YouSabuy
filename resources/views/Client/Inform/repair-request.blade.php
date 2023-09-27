@@ -29,31 +29,27 @@
     <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-        <th>Report No.</th>
-        <th>Date</th>
+        <th>Created At</th>
         <th>Room</th>
-        <th>Tel.</th>
-        <th>Repair report</th>
+        <th>Description</th>
         <th>ผู้รับแจ้ง</th>
         <th>Status</th>
     </tr>
-    {{-- @foreach( $reports as $report)
+    @foreach( $requests as $request)
     <tbody>
-            <td>{{ $report->id}}</td>
-            <td>{{ $report->date}}</td>
-            <td>{{ $report->room}}</td>
-            <td>{{ $report->tel}}</td>
-            <td>{{ $report->description}}</td>
-            <td>{{ $report->receiver}}</td>
+            <td>{{ $request->created_at}}</td>
+            <td>{{ $request->room_id}}</td>
+            <td>{{ $request->description}}</td>
+            <td>{{ $request->fullname}}</td>
             <td>
-            @if ($report->status === 'finished')
+            @if ($request->status === 'finished')
               <span class="badge badge-success rounded-pill d-inline">finished</span>
-            @elseif ( $report->status === 'unfinished')
+            @elseif ( $request->status === 'unfinished')
               <span class="badge rounded-pill badge-danger">unfinished</span>
             @endif
             </td>
     </tbody>
-    @endforeach --}}
+    @endforeach
   </thead>
 </table>
 {{-- </body>

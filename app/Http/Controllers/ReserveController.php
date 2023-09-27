@@ -22,7 +22,10 @@ class ReserveController extends Controller
         ]);
         $room = Room::where('room_id', '=', $request->input('room'))->first();
         if ($room->exists()) {
-            if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
+            if ($this->checkReg()) {
+                echo "You have already make registrations";
+            }
+            else if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
                 $registration = new Registration;
                 $registration->startdate = $request->input('datecheckin');
                 $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
@@ -59,6 +62,9 @@ class ReserveController extends Controller
         $year = (int)substr($date, 0, 4)+$amount;
         return "{$year}".substr($date, 4);
     }
-    
-    
+
+    private function checkReg() {
+        $affected = DB::table('registrations')->where('client_id', Auth::user()->id)->first();
+        return $affected != null;
+    }
 }

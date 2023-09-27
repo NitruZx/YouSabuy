@@ -1,7 +1,7 @@
 <div class="testbox">
     <h1>Reservation</h1>
   
-    <form action="{{route('addinfo')}}" method="post">
+    <form action="{{route('reserve.addinfo')}}" method="post">
   
       @csrf
     <hr>
