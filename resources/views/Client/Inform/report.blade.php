@@ -29,19 +29,19 @@
   <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-        <th>Report No.</th>
-        <th>Date</th>
+        <th>Created At</th>
         <th>Room</th>
-        <th>Details</th>
+        <th>Description</th>
+        <th>Admin</th>
     </tr>
-    {{-- @foreach( $reports as $report)
+    @foreach( $reports as $report)
     <tbody>
-            <td>{{ $report->id}}</td>
             <td>{{ $report->created_at}}</td>
             <td>{{ $report->room_id}}</td>
-            <td>{{ $report->details}}</td>
+            <td>{{ $report->description}}</td>
+            <td>{{ $report->fullname}}</td>
     </tbody>
-    @endforeach --}}
+    @endforeach
   </thead>
 </table>
 {{-- </body>
