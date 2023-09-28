@@ -45,11 +45,18 @@ rel="stylesheet"
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+
                     {{-- click 1 --}}
+                    
+
+                    
                     <div id="popup1" class="overlay">
                         <a class="cancel" href="#"></a>
                         <div class="popup">
                                   <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
+                                <form action="{{route('reporttext')}}" method="post">
+                                      @csrf
+
                                     <p class="name">
                                       <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name"
                                       value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}"/>
@@ -59,20 +66,19 @@ rel="stylesheet"
                                       <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}} "/>
                                     </p>
                                       
-
                                     <p class="text">
                                       <label >ปัญหา:</label>
                                       <textarea name="reporttext" class="validate[required,length[6,300]] feedback-input" id="report-text" placeholder="Report text"></textarea>
-                                    
                                     </p>
 
                                     <div class="submit">
-                                      <input type="submit" value="REPORT" id="button-blue"/>
+                                      <button type="submit" value="REPORT" id="button-blue"></button>
                                       <div class="ease"></div>
                                     </div>
-                          
+                                </form>
                         </div>
                     </div>
+                  
                     {{-- click 2--}}
                     <div id="popup2" class="overlay">
                       <a class="cancel" href="#"></a>

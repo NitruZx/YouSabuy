@@ -22,6 +22,10 @@ class InformController extends Controller
         $report->description = $request->input('reporttext');
         $report->tenant_id = Auth::user()->id;
         $report->save();
-        
+        return redirect()->back();
     }
+    
+
+
+
 }
