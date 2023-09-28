@@ -48,7 +48,6 @@ rel="stylesheet"
 
                     {{-- click 1 --}}
                     
-
                     
                     <div id="popup1" class="overlay">
                         <a class="cancel" href="#"></a>
@@ -108,6 +107,9 @@ rel="stylesheet"
                     <a class="cancel" href="#"></a>
                     <div class="popup">
                               <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
+                              <form action="{{route('repairtext')}}" method="post">
+                                @csrf
+
                                 <p class="name">
                                   <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" name="fname" 
                                   id="name" value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}" /> 
@@ -118,14 +120,15 @@ rel="stylesheet"
                                 </p>
                                 <p class="text">
                                   <label >อาการ/ปัญหา:</label>
-                                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+                                  <textarea name="repairtext" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
                                 </p>
                               
                                 <div class="submit">
-                                  <input type="submit" value="SEND" id="button-blue"/>
+                                  <button type="submit" value="SEND" id="button-blue"></button>
                                   <div class="ease"></div>
                                 </div>
-                      
+                            </form>
+
                     </div>
                 </div>
 

@@ -75,8 +75,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
+    
     Route::post('/inform/report/sent', [InformController::class, 'report'])->name('reporttext');
-
+    Route::post('/inform/repair-request/sent', [InformController::class, 'repair'])->name('repairtext');
+    
     // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
         return view('uitest'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)

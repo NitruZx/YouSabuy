@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\InformCallData;
 use App\Models\Report;
+use App\Models\Repair_Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,6 +26,14 @@ class InformController extends Controller
         return redirect()->back();
     }
     
+    public function repair(Request $request){
+        $repair = new Repair_Request();
+        $repair->description = $request->input('repairtext');
+        $repair->tenant_id = Auth::user()->id;
+        $repair->status = 'unfinished';
+        $repair->save();
+        return redirect()->back();
+    }
 
 
 
