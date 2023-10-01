@@ -27,11 +27,11 @@ class InformController extends Controller
     }
     
     public function repair(Request $request){
-        $repair = new Repair_Request();
-        $repair->description = $request->input('repairtext');
-        $repair->tenant_id = Auth::user()->id;
-        $repair->status = 'unfinished';
-        $repair->save();
+        $repair_Request = new Repair_Request();
+        $repair_Request->description = $request->input('repairtext');
+        $repair_Request->tenant_id = Auth::user()->id;
+        $repair_Request->status = 'unfinished';
+        $repair_Request->save();
         return redirect()->back();
     }
 
