@@ -79,9 +79,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
-    
+    // sent to database 
     Route::post('/inform/report/sent', [InformController::class, 'report'])->name('reporttext');
     Route::post('/inform/repair-request/sent', [InformController::class, 'repair'])->name('repairtext');
+
     
     // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
@@ -89,6 +90,10 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+//report test
+Route::view('/admin_report', '/admin/all_report/admin_report')->middleware('auth');
+// Route::get('/admin_report');
+//     return view('/admin/all_report/admin_report');
 
 Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reserve.addinfo');
