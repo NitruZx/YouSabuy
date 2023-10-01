@@ -28,7 +28,7 @@ class PaymentController extends Controller
                ->join('room_types', 'rooms.type', '=', 'room_types.type')
                ->where('room_id', $request->room_id)->first();
       $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET_KEY'));
-      $total = $room->monthly_price + $request->utility_price;
+      $total = $room->monthly_price + $request->utility_price + $request->charge;
       $checkout_session = $stripe->checkout->sessions->create([
          'line_items' => [[
             'price_data' => [
@@ -41,7 +41,7 @@ class PaymentController extends Controller
             'quantity' => 1,
          ]],
          'mode' => 'payment',
-         'success_url' => route('checkout.success', [], true)."?bill_id={$request->bill_id}",
+         'success_url' => route('checkout.success', [], true)."?bill_id={$request->bill_id}&latefee={$request->charge}",
          'cancel_url' => route('checkout.success', [], true),
       ]);
 
@@ -64,7 +64,7 @@ class PaymentController extends Controller
          throw new NotFoundHttpException();
       }
       $todayDate = date("Y-m-d");
-      $update = DB::table('payments')->where('bill_id', $bill_id)->update(['status' => 'paid', 'checkout_date' => $todayDate]);
+      $update = DB::table('payments')->where('bill_id', $bill_id)->update(['status' => 'paid', 'checkout_date' => $todayDate, 'late_fee' => $request->latefee]);
       if ($update) {
          return redirect()->back();
       }

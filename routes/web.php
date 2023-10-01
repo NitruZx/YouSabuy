@@ -8,6 +8,7 @@ use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
+use App\Http\Controllers\ManagePayments;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -57,6 +58,7 @@ Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
 
+Route::get('/manage-payments', [ManagePayments::class, 'index'])->name('manage.payments');
 
 // Route::post('/checking', [])
 
