@@ -59,7 +59,9 @@ Route::get('/inform/maidcall', function () {
 });
 
 Route::get('/manage-payments', [ManagePayments::class, 'index'])->name('manage.payments');
-
+Route::get('/manage-bills', function () {
+    return view('/admin/payments/manage-bill');
+});
 // Route::post('/checking', [])
 
 Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');
