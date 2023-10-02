@@ -73,13 +73,16 @@
                 {{ $data->due}}
               </td>
               <td class="px-6 py-4">
-                @if ($data->diff > 0)
+                @if ($data->diff > 0 && $data->status === 'unpaid')
                 {{$data->diff * 100}}
                 @php
                     $late_fee = $data->diff * 100;
                 @endphp
-                @else
+                @elseif ($data->diff > 0 && $data->status === 'paid')
                   {{$data->late_fee}}
+                @php
+                    $late_fee = $data->late_fee;
+                @endphp
                 @endif
               </td>
               <td class="px-6 py-4">
