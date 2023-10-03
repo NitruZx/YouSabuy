@@ -23,8 +23,13 @@ use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('newdashboard');
 });
+
+Route::get('/newdashboard', function () {
+    return view('newdashboard');
+})->middleware(['auth', 'verified'])->name('newdashboard');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -37,13 +42,21 @@ Route::get('/registration', function(){
 //     return view('history');
 // });
 
+Route::get('/cadmin', function(){
+    return view('contractadmin');
+});
+
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-})->name('roomdetail');
+})->middleware('checkroomdetail')->name('roomdetail');
+
+Route::get('/unregisdetail', function(){
+    return view('roomdetail/unregisroom-detail');
+})->name('unregisroomdetail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'checkregis'])->name('dashboard');
 
 Route::post('/paymentlist/paying', function (Request $request) {
     $value = $request->totalPrice;
@@ -57,7 +70,6 @@ Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
 
-// Route::post('/checking', [])
 
 Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');
 Route::get('/paymentlist/success', [PaymentController::class, 'success'])->name('checkout.success');
@@ -74,14 +86,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
+    Route::get('/registration', [ReserveController::class, 'index']);
     Route::get('/test', function () {
         return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
 });
 
 
-Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
-Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reserve.addinfo');
+Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
+Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
