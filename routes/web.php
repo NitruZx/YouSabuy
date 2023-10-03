@@ -8,6 +8,7 @@ use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
+use App\Http\Controllers\ManagePayments;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -70,6 +71,11 @@ Route::get('/inform/maidcall', function () {
     return view('/Client/Inform/maidcall');
 });
 
+Route::get('/manage-payments', [ManagePayments::class, 'index'])->name('manage.payments');
+Route::get('/manage-bills', function () {
+    return view('/admin/payments/manage-bill');
+});
+// Route::post('/checking', [])
 
 Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');
 Route::get('/paymentlist/success', [PaymentController::class, 'success'])->name('checkout.success');
@@ -87,11 +93,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
     Route::get('/registration', [ReserveController::class, 'index']);
+    // sent to database 
+    Route::post('/inform/report/sent', [InformController::class, 'report'])->name('reporttext');
+    Route::post('/inform/repair-request/sent', [InformController::class, 'repair'])->name('repairtext');
+
+    
+    // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
-        return view('/Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
+        return view('uitest'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
 });
 
+//report test
+Route::view('/admin_report', '/admin/all_report/admin_report')->middleware('auth');
+// Route::get('/admin_report');
+//     return view('/admin/all_report/admin_report');
 
 Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');

@@ -13,27 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
-></script>
-<link rel="stylesheet" href="{{ asset('css/paymentpage.css')}}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"  rel="stylesheet" />
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -54,82 +34,92 @@
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <table class="table align-middle mb-0 bg-white">
-                    <thead class="table-dark">
-                      <tr>
-                          <th><b>ID</b></th>
-                          <th><b>ค่าน้ำ(บาท)</b></th>
-                          <th><b>ค่าไฟ(บาท)</b></th>
-                          <th><b>ค่าปรับ(บาท)</b></th>
-                          <th><b>ค่าห้อง(บาท)</b></th>
-                          <th><b>ยอดเงินรวม</b></th>
-                          <th><b>สถานะ</b></th>
-                          <th><b>วันที่ชำระ</b></th>
-                      </tr>
-                    </thead>
-                      @foreach( $datas as $data)
-                          <tr>
-                              <td>{{ $data->bill_id}}</td>
-                              <td>{{ $data->water_bill}}</td>
-                              <td>{{ $data->electric_bill}}</td>
-                              <td>{{ $data->late_fee}}</td>
-                              <td>{{$data->monthly_price}}</td>
-                              <td>{{$data->water_bill + $data->electric_bill + $data->late_fee+ $data->monthly_price}}</td>
-                              @if ($data->status === 'paid')
-                              <td>
-                                <span class="badge badge-success rounded-pill d-inline">ชำระเงินแล้ว</span></td>
-                              <td>{{ $data->checkout_date}}</td>
-                              @elseif ( $data->status === 'unpaid')
-                              <td>
-                                {{-- <a href = "" class="btn btn-info">ชำระเงิน</a> --}}
-                                <form action = "{{route('createpayment')}}" method="post">
-                                  @csrf
-                                    {{-- <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}"> --}}
-                                    <input type="hidden" name="bill_id" value="{{$data->bill_id}}" />
-                                    <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->late_fee}}" />
-                                    <input type="hidden" name="room_id" value="{{$data->room_id}}" />
-                                    <input type="submit" value="ไปชำระเงิน" class="btn btn-info btn-rounded" />
-                                </form>
-                                </td>   
-                              <td>---</td>
-                              @endif
-                          </tr>
-                      @endforeach
-                  </table>
+                
+                  
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-center text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                วันออกบิล
+              </th>
+              <th scope="col" class="px-6 py-3">
+                วันครบกำหนด
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ค่าปรับ(บาท)
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ยอดเงินรวม(บาท)
+              </th>
+              <th scope="col" class="px-6 py-3">
+                สถานะ
+              </th>
+              <th scope="col" class="px-6 py-3">
+                วันที่ชำระ
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+        @php
+          $late_fee = 0;    
+        @endphp
+          @foreach( $datas as $data)
+          <tr class="bg-white border-b hover:bg-gray-50">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                {{ $data->monthbill}}
+              </th>
+              <td class="px-6 py-4">
+                {{ $data->due}}
+              </td>
+              <td class="px-6 py-4">
+                @if ($data->diff > 0 && $data->status === 'unpaid')
+                {{$data->diff * 100}}
+                @php
+                    $late_fee = $data->diff * 100;
+                @endphp
+                @elseif ($data->diff > 0 && $data->status === 'paid')
+                  {{$data->late_fee}}
+                @php
+                    $late_fee = $data->late_fee;
+                @endphp
+                @endif
+              </td>
+              <td class="px-6 py-4">
+                {{$data->water_bill + $data->electric_bill + $late_fee + $data->monthly_price}}
+              </td>
+              @if ($data->status === 'paid')
+                <td class="px-6 py-4">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">ชำระเงินแล้ว</span>
+                </td>
+                <td class="px-6 py-4">
+                  {{ $data->paiddate}}
+                </td>
+              @elseif ( $data->status === 'unpaid')
+                <td class="px-6 py-3">
+                  <form action = "{{route('createpayment')}}" method="post">
+                    @csrf
+                      {{-- <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}"> --}}
+                      <input type="hidden" name="bill_id" value="{{$data->bill_id}}" />
+                      <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->late_fee}}" />
+                      <input type="hidden" name="room_id" value="{{$data->room_id}}" />
+                      <input type="hidden" name="charge" value="{{$late_fee}}" />
+                      <button type="submit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">ไปชำระเงิน</button>
+                  </form>
+                </td>
+                <td class="px-6 py-4">
+                  ---
+                </td>
+              @endif
+          </tr>
+          @endforeach
+      </tbody>
+  </table>
+</div>
                 </div>
             </div>
             </main>
         </div>
-        @if ($message = Session::get('check'))
-          {{-- @include('Client.payment.omise.paypage'); --}}
-          {{$total = Session::get('total')}}
-          {{-- @include('Client.payment.omise.checkout') --}}
-          <style>
-            .omise-checkout-button{
-              display: none;
-            }
-        </style>
-            <div class="form">
-              
-              <form name="checkoutForm" method="POST" action="{{route('paying')}}">
-                @csrf
-                <script type="text/javascript" src="https://cdn.omise.co/omise.js"
-                        data-key="pkey_test_5x5y20p7x8ck664erv7"
-                        data-image="https://cdn.omise.co/assets/dashboard/images/omise-logo.png"
-                        data-amount="{{$total}}00"
-                        data-currency="thb"
-                        data-button-label="Pay now"
-                        data-frame-label="Example 1"
-                        data-submit-label="Checkout"
-                  data-other-payment-methods="promptpay">
-                </script>
-                <input type="hidden" id="totalPrice" name="totalPrice" value="{{$total}}">
-              </form>
-        <script>
-            document.querySelector('.omise-checkout-button').click()
-        </script>
-        @endif
-        
-            
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     </body>
 </html>

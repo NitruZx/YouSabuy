@@ -8,11 +8,12 @@ class PaymentService {
 
     public function selectPayment() {
         $room = DB::table('clients')->select('room_id')->where('id', Auth::user()->id)->first();
-        // dd($room);
         $datas = DB::table('payments')
         ->join('rooms', 'payments.room_id', '=', 'rooms.room_id')
         ->join('room_types', 'rooms.type', '=', 'room_types.type')
-        ->select('payments.*', 'room_types.monthly_price')
+        ->select('payments.*', DB::raw('DATE_FORMAT(created_at, "%d/%m/%Y") AS monthbill'), DB::raw('DATEDIFF(CURRENT_DATE() , payments.due_date) AS diff'),
+         DB::raw('DATE_FORMAT(checkout_date, "%d/%m/%Y") AS paiddate, DATE_FORMAT(due_date, "%d/%m/%Y") AS due'),
+         'room_types.monthly_price')
         ->where('payments.room_id', $room->room_id)
         ->orderBy('created_at')
         ->get();
