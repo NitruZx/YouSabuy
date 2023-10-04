@@ -14,8 +14,8 @@ class Report extends Model
     public const UPDATED_AT = null;
 
     protected $fillable = ['tenant_id', 'description', 'admin_id'];
-
-    public function client() : BelongsTo {
-        return $this->belongsTo(Client::class);
+    
+    public function client(): BelongsTo {
+        return $this->belongsTo(Client::class, 'tenant_id');
     }
 }

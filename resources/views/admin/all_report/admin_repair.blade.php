@@ -2,15 +2,15 @@
 
 @section('header')
 <style>
-  [x-cloak] {
-      display: none !important;
-  }
-</style>
-
-@filamentStyles
+    [x-cloak] {
+        display: none !important;
+    }
+  </style>
+  
+  @filamentStyles
 @endsection
 
 @section('content')
-@livewire('admin-report')
+@livewire('admin-repair')
 @filamentScripts
 @endsection

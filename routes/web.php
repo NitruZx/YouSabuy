@@ -9,6 +9,9 @@ use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
 use App\Http\Controllers\ManagePayments;
+use App\Http\Controllers\CheckReportController;
+use App\Http\Controllers\CheckRepairController;
+use App\Http\Controllers\CheckMaidCallController;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -24,8 +27,13 @@ use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('newdashboard');
 });
+
+Route::get('/newdashboard', function () {
+    return view('newdashboard');
+})->middleware(['auth', 'verified'])->name('newdashboard');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -38,13 +46,21 @@ Route::get('/registration', function(){
 //     return view('history');
 // });
 
+Route::get('/cadmin', function(){
+    return view('contractadmin');
+});
+
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-})->name('roomdetail');
+})->middleware('checkroomdetail')->name('roomdetail');
+
+Route::get('/unregisdetail', function(){
+    return view('roomdetail/unregisroom-detail');
+})->name('unregisroomdetail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'checkregis'])->name('dashboard');
 
 Route::post('/paymentlist/paying', function (Request $request) {
     $value = $request->totalPrice;
@@ -79,6 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/inform/repair-request', [RepairRequestController::class, 'index'])->name('inform.repair-request');
     Route::get('/inform/report', [ReportController::class, 'index'])->name('inform.report');
     Route::get('/inform/maidcall', [MaidCallController::class, 'index'])->name('inform.maidcall');
+    Route::get('/registration', [ReserveController::class, 'index']);
     // sent to database 
     Route::post('/inform/report/sent', [InformController::class, 'report'])->name('reporttext');
     Route::post('/inform/repair-request/sent', [InformController::class, 'repair'])->name('repairtext');
@@ -90,13 +107,15 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-//report test
-Route::view('/admin_report', '/admin/all_report/admin_report')->middleware('auth');
-// Route::get('/admin_report');
-//     return view('/admin/all_report/admin_report');
 
-Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
-Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reserve.addinfo');
+Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
+//Admin view all report
+Route::get('/admin_report', [CheckReportController::class, 'index']);
+Route::get('/admin_repair', [CheckRepairController::class, 'index']);
+Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index']);
+
+Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
+Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 

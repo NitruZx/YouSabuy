@@ -45,3 +45,19 @@ function updateProgressbar() {
   progress.style.width =
     ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
+
+
+function displayRadioValue() {
+  var ele = document.getElementsByName('choose');
+  var now = new Date('datecheckin');
+
+  for (i = 0; i < ele.length; i++) {
+      if (ele[i].checked)
+          document.getElementById("chosen").innerHTML
+              = "Room: " + ele[i].value;
+          
+  }
+}
+
+
+
