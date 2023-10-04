@@ -12,4 +12,12 @@ class Reservation extends Model
     public $incrementing = false;
     protected $table = 'reservations';
     protected $primaryKey = ['room_id', 'user_id'];
+    protected $fillable = [
+        'room_id',
+        'client_id',
+        'startdate',
+        'enddate',
+        'reg_statuse',
+        '_token'
+                ];
 }

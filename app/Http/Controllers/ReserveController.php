@@ -8,35 +8,51 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+use function Laravel\Prompts\alert;
 use function PHPUnit\Framework\returnSelf;
 // use app\Models\Reservation;
 
 class ReserveController extends Controller
 {
-    function index(){
-        return view('reserve.reserve-room');
+    function index(Request $request){
+        $rooms = DB::table('rooms')->where('status', 'available')->get();
+        return view('registration/registration', compact('rooms'));
+        $registrations = new Registration;
+        $registrations->startdate = $request->input('datecheckin');
+        $registrations->enddate = $this->addDateYear($request->input('datecheckin'), 1);
+        $registrations->client_id = Auth::user()->id;
+        $registrations->room_id = $request->choose;
+        $registrations->save();
+        return redirect()->route('roomdetail');
+
+        
     }
 
     function addinfo(Request $request){
         $request->validate([
-            'room' => 'required',    
+            'choose' => 'required',    
         ]);
-        $room = Room::where('room_id', '=', $request->input('room'))->first();
+        
+        $room = Room::where('room_id', '=', $request->input('choose'))->first();
+        
+
         if ($room->exists()) {
             if ($this->checkReg()) {
-                echo "You have already make registrations";
+                Registration::create($request->all());
+                return back()->with('message', 'You have already registration');
             }
-            else if ($this->updateRoomStatus($request->input('room')) && ($room->status == 'available')) {
+            else if ($this->updateRoomStatus($request->input('choose')) && ($room->status == 'available')) {
                 $registration = new Registration;
                 $registration->startdate = $request->input('datecheckin');
                 $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
                 $registration->client_id = Auth::user()->id;
-                $registration->room_id = $request->room;
+                $registration->room_id = $request->input('choose');
                 $registration->save();
                 return redirect()->route('roomdetail');
             }
         }
-        return redirect()->route('reservepage');
+        return redirect()->route('roomdetail');
     }
     public function upload(Request $request)
     {
@@ -71,4 +87,6 @@ class ReserveController extends Controller
         $affected = DB::table('registrations')->where('client_id', Auth::user()->id)->first();
         return $affected != null;
     }
+
+    
 }

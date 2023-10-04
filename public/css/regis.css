@@ -28,15 +28,9 @@
     border: 1px solid #ccc;
     border-radius: 0.25rem;
   }
-  checkr {
-    background-color: initial;
-    cursor: default;
-    appearance: auto;
-    box-sizing: border-box;
-    margin: 3px 3px 3px 4px;
-    padding: initial;
-    border: initial;
 
+  .checkr {
+    width: auto;
   }
   
   .width-50 {
@@ -111,7 +105,7 @@
     width: clamp(320px, 30%, 430px);
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 0.35rem;
+    border-radius: 1.5rem;
     padding: 1.5rem;
   }
   
