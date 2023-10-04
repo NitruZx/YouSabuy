@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('room_id', 5);
             $table->integer('water_units');
             $table->integer('electric_units');
+            $table->integer('monthly_water_units');
+            $table->integer('monthly_electric_units');
             $table->timestamp('created_at');
         });
     }

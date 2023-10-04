@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
     
     // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
-        return view('uitest'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
+        return view('admin/manage-room'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
 });
 

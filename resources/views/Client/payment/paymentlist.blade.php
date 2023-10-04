@@ -101,7 +101,7 @@
                     @csrf
                       {{-- <input type="hidden" id="totalPrice" name="totalPrice" value="{{$data->water_bill + $data->electric_bill + $data->charge + 4000}}"> --}}
                       <input type="hidden" name="bill_id" value="{{$data->bill_id}}" />
-                      <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill + $data->late_fee}}" />
+                      <input type="hidden" name="utility_price" value="{{$data->water_bill + $data->electric_bill}}" />
                       <input type="hidden" name="room_id" value="{{$data->room_id}}" />
                       <input type="hidden" name="charge" value="{{$late_fee}}" />
                       <button type="submit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">ไปชำระเงิน</button>
