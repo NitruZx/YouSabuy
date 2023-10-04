@@ -9,6 +9,9 @@ use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
 use App\Http\Controllers\ManagePayments;
+use App\Http\Controllers\CheckReportController;
+use App\Http\Controllers\CheckRepairController;
+use App\Http\Controllers\CheckMaidCallController;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -88,10 +91,12 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-//report test
-Route::view('/admin_report', '/admin/all_report/admin_report')->middleware('auth');
-// Route::get('/admin_report');
-//     return view('/admin/all_report/admin_report');
+
+Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
+//Admin view all report
+Route::get('/admin_report', [CheckReportController::class, 'index']);
+Route::get('/admin_repair', [CheckRepairController::class, 'index']);
+Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index']);
 
 Route::get('reserve', [ReserveController::class, 'index'])->name('reservepage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reserve.addinfo');
