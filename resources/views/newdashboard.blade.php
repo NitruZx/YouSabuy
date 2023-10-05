@@ -11,6 +11,8 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        @livewireStyles
+        @filamentStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
@@ -26,9 +28,6 @@
                 </div>
             </header>
         @endif
-</body>
-</html>
-<body>
   <!--This is perhaps one of my first nice looking websites that I have made. (Criticism is welcome so that I can learn about different techniques or mistakes I have made) -->
 
   <!-- The image that I provide is only a backup image. If anyone could help me find a way to upload images here that would be awesome!
@@ -135,6 +134,8 @@
       <input type="submit" value="Send" />
     </form>
   </div> -->
+  @filamentScripts
+  @livewireScripts
 </body>
 
 </html>

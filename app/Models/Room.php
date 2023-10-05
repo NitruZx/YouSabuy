@@ -15,6 +15,14 @@ class Room extends Model
     public $timestamps = false;
     protected $primaryKey = 'room_id';
 
+    protected $fillable = [
+        'room_id',
+        'floor',
+        'building',
+        'status',
+        'type'
+    ];
+
     public function roomType() : BelongsTo {
         return $this->belongsTo(Room_Type::class, 'type');
     }

@@ -1,33 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouSabuy</title>
+@extends('layouts.client-layout')
+@section('header')
   <link rel="stylesheet" href="{{url('css/welcum.css')}}">
+@endsection
 
-  <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-      
-        @include('layouts.navigation')
-
-        @if (isset($header))
-            <header class="bg-white">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-</body>
-</html>
-<body>
+@section('content')
   <!--This is perhaps one of my first nice looking websites that I have made. (Criticism is welcome so that I can learn about different techniques or mistakes I have made) -->
 
   <!-- The image that I provide is only a backup image. If anyone could help me find a way to upload images here that would be awesome!
@@ -49,7 +25,173 @@
       <p id="backButton"><a href="#form">Don't have an account? Sign up now!</a></p>
     </div>
   </section> -->
-  <header id="Introduction">
+  <div
+    class="relative overflow-hidden bg-cover bg-no-repeat drop-shadow-2xl"
+    style="
+      background-position: 50%;
+      background-image: url('../assets/image/bg.jpg');
+      height: 500px;
+    ">
+    <div
+      class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+      style="background-color: rgba(0, 0, 0, 0.50)">
+      <div class="flex h-full items-center justify-center">
+        <div class="px-6 text-center text-white md:px-12">
+          <h1 class="mb-6 text-5xl font-bold">Welcome to YouSabuyMansion</h1>
+          <h3 class="mb-8 text-3xl font-bold">นิยามที่แท้จริงของอพาร์ตเมนท์ยุคใหม่ ที่คุณไม่ควรพลาด!!</h3>
+          {{-- <button
+            type="button"
+            class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            reserve now
+          </button> --}}
+          <div
+  class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+  <h5
+    class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    Card title
+  </h5>
+  <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+    Some quick example text to build on the card title and make up the
+    bulk of the card's content.
+  </p>
+  <button
+    type="button"
+    class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+    data-te-ripple-init
+    data-te-ripple-color="light">
+    Button
+  </button>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="blurBg"></div>
+  <div class="max-w-7xl mx-auto my-10 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+              <div
+              id="carouselExampleCrossfade"
+              class="relative"
+              data-te-carousel-init
+              data-te-ride="carousel">
+              <!--Carousel indicators-->
+              <div
+                class="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+                data-te-carousel-indicators>
+                <button
+                  type="button"
+                  data-te-target="#carouselExampleCrossfade"
+                  data-te-slide-to="0"
+                  data-te-carousel-active
+                  class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-current="true"
+                  aria-label="Slide 1"></button>
+                <button
+                  type="button"
+                  data-te-target="#carouselExampleCrossfade"
+                  data-te-slide-to="1"
+                  class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-label="Slide 2"></button>
+                <button
+                  type="button"
+                  data-te-target="#carouselExampleCrossfade"
+                  data-te-slide-to="2"
+                  class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-label="Slide 3"></button>
+              </div>
+            
+              <!--Carousel items-->
+              <div
+                class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                <!--First item-->
+                <div
+                  class="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                  data-te-carousel-fade
+                  data-te-carousel-item
+                  data-te-carousel-active>
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+                    class="block w-full"
+                    alt="Wild Landscape" />
+                </div>
+                <!--Second item-->
+                <div
+                  class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                  data-te-carousel-fade
+                  data-te-carousel-item>
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+                    class="block w-full"
+                    alt="Camera" />
+                </div>
+                <!--Third item-->
+                <div
+                  class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                  data-te-carousel-fade
+                  data-te-carousel-item>
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+                    class="block w-full"
+                    alt="Exotic Fruits" />
+                </div>
+              </div>
+            
+              <!--Carousel controls - prev item-->
+              <button
+                class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button"
+                data-te-target="#carouselExampleCrossfade"
+                data-te-slide="prev">
+                <span class="inline-block h-8 w-8">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </span>
+                <span
+                  class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                  >Previous</span
+                >
+              </button>
+              <!--Carousel controls - next item-->
+              <button
+                class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button"
+                data-te-target="#carouselExampleCrossfade"
+                data-te-slide="next">
+                <span class="inline-block h-8 w-8">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </span>
+                <span
+                  class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                  >Next</span
+                >
+              </button>
+            </div>
+            </div>
+        </div>
+  {{-- <header id="Introduction"> --}}
     {{-- <nav>
       <p><a href="#" id="openRooms">profile</a></p>
       <ul id="mainNav">
@@ -61,7 +203,7 @@
       </ul>
     </nav> --}}
 
-    <section class="slideSection" id="mainSection">
+    {{-- <section class="slideSection" id="mainSection">
       <h2>Welcome to YouSabuyMansion</h2>
       <p>นิยามที่แท้จริงของอพาร์ตเมนท์ยุคใหม่ ที่คุณไม่ควรพลาด!!
         <br /> การออกแบบที่เฉียบทุกมุมมอง ผสานการออกแบบภายในและภายนอก 
@@ -69,9 +211,9 @@
         <br />
       </p>
 
-    </section>
+    </section> --}}
 
-  </header>
+  {{-- </header> --}}
 
   <!-- <section id="travelSection">
 
@@ -134,6 +276,30 @@
       <input type="submit" value="Send" />
     </form>
   </div> -->
-</body>
+  
+<footer class="bg-white rounded-lg">
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+          <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+              <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+              </li>
+              <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+              </li>
+              <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+              </li>
+              <li>
+                  <a href="#" class="hover:underline">Contact</a>
+              </li>
+          </ul>
+      </div>
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">YouSabuyMansion</a>. All Rights Reserved.</span>
+  </div>
+</footer>
 
-</html>
+
+@endsection
