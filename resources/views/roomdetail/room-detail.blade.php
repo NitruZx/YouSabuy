@@ -12,6 +12,8 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+		@livewireStyles
+        @filamentStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
@@ -264,6 +266,8 @@
 
 	})(jQuery); 
 		</script>
+	@filamentScripts
+	@livewireScripts
 </body>
 </html>		
  		

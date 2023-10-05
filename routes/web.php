@@ -9,6 +9,9 @@ use App\Http\Controllers\RepairRequestController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MaidCallController;
 use App\Http\Controllers\ManagePayments;
+use App\Http\Controllers\CheckReportController;
+use App\Http\Controllers\CheckRepairController;
+use App\Http\Controllers\CheckMaidCallController;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -24,7 +27,7 @@ use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 */
 
 Route::get('/', function () {
-    return view('newdashboard');
+    return view('dashboard');
 });
 
 Route::get('/newdashboard', function () {
@@ -49,7 +52,7 @@ Route::get('/cadmin', function(){
 
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-})->middleware('checkroomdetail')->name('roomdetail');
+})->name('roomdetail');
 
 Route::get('/unregisdetail', function(){
     return view('roomdetail/unregisroom-detail');
@@ -57,8 +60,8 @@ Route::get('/unregisdetail', function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'checkregis'])->name('dashboard');
-
+})->name('dashboard');
+// ->middleware(['auth', 'verified', 'checkregis'])
 Route::post('/paymentlist/paying', function (Request $request) {
     $value = $request->totalPrice;
     return view('/Client/payment/omise/checkout')->with('total', $value);
@@ -100,14 +103,16 @@ Route::middleware('auth')->group(function () {
     
     // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
-        return view('uitest'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
+        return view('Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
 });
 
-//report test
-Route::view('/admin_report', '/admin/all_report/admin_report')->middleware('auth');
-// Route::get('/admin_report');
-//     return view('/admin/all_report/admin_report');
+
+Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
+//Admin view all report
+Route::get('/admin_report', [CheckReportController::class, 'index']);
+Route::get('/admin_repair', [CheckRepairController::class, 'index']);
+Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index']);
 
 Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');
