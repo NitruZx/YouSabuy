@@ -16,6 +16,13 @@
 
         
         <!-- Scripts -->
+        <style>
+          [x-cloak] {
+              display: none !important;
+          }
+      </style>
+        @livewireStyles
+        @filamentStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Font Awesome -->
 <link
@@ -236,5 +243,7 @@ rel="stylesheet"
             </div>
         </div>
         </div>
+        @filamentScripts
+        @livewireScripts
     </body>
 </html>

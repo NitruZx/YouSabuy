@@ -52,7 +52,7 @@ Route::get('/cadmin', function(){
 
 Route::get('/roomdetail', function () {
     return view('roomdetail/room-detail');
-})->middleware('checkroomdetail')->name('roomdetail');
+})->name('roomdetail');
 
 Route::get('/unregisdetail', function(){
     return view('roomdetail/unregisroom-detail');
@@ -60,8 +60,8 @@ Route::get('/unregisdetail', function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'checkregis'])->name('dashboard');
-
+})->name('dashboard');
+// ->middleware(['auth', 'verified', 'checkregis'])
 Route::post('/paymentlist/paying', function (Request $request) {
     $value = $request->totalPrice;
     return view('/Client/payment/omise/checkout')->with('total', $value);
