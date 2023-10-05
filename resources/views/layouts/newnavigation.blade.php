@@ -117,7 +117,4 @@
                     @endauth
             @endif
 
-            
-
-    
 </nav>

@@ -39,7 +39,7 @@ class ReserveController extends Controller
 
         if ($room->exists()) {
             if ($this->checkReg()) {
-                Registration::create($request->all());
+
                 return back()->with('message', 'You have already registration');
             }
             else if ($this->updateRoomStatus($request->input('choose')) && ($room->status == 'available')) {
@@ -50,8 +50,10 @@ class ReserveController extends Controller
                 $registration->room_id = $request->input('choose');
                 $registration->save();
                 return redirect()->route('roomdetail');
+            } else {
+                return back()->with('success', "You have completed registration");
             }
-        }
+        } 
         return redirect()->route('roomdetail');
     }
     public function upload(Request $request)

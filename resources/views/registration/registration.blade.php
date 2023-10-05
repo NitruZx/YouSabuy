@@ -110,22 +110,31 @@
         <h1>มึงจะอยู่จริงๆใช่ไหม กด submit ซะ</h1>
         <div class="btns-group">
           <a href="#" class="btn btn-prev">Previous</a>
-          <input type="submit" value="Submit" class="btn" onclick="comfirmation(event)" />
+          <a href="{{route('roomdetail')}}">
+          <input type="submit" value="Submit" class="btn">
+          </a>
         </div>
       </div>
     </form>
 
     @if(Session::has('message'))
     <script>
-      swal("Message", "{{ Session::get('message') }}", 'success',{
+      swal("Error", "{{ Session::get('message') }}", 'error',{
         button:true,
         button:"oK",
-
       });
       </script>
-
-
     @endif
+
+    @if(Session::has('success'))
+    <script>
+      swal("success", "{{ Session::get('success') }}", 'success',{
+        button:true,
+        button:"oK",
+      });
+      </script>
+    @endif
+
 
   </body>
 </html>

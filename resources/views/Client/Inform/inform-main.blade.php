@@ -71,7 +71,7 @@ rel="stylesheet"
                                     </p>
 
                                     <div class="submit">
-                                      <button type="submit" value="REPORT" id="button-blue"></button>
+                                      <button type="submit" value="REPORT" id="button-blue">SEND</button>
                                       <div class="ease"></div>
                                     </div>
                                 </form>
@@ -124,7 +124,7 @@ rel="stylesheet"
                                 </p>
                               
                                 <div class="submit">
-                                  <button type="submit" value="SEND" id="button-blue"></button>
+                                  <button type="submit" value="SEND" id="button-blue">SEND</button>
                                   <div class="ease"></div>
                                 </div>
                             </form>
