@@ -64,6 +64,7 @@ rel="stylesheet"
                                       @csrf
 
                                     <p class="name">
+                                      <label >Name:</label>
                                       <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name"
                                       value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}"/>
                                     </p>
@@ -91,10 +92,14 @@ rel="stylesheet"
                       <div class="popup">
                                 <img class="logo" src="https://cdn.discordapp.com/attachments/1009383844983619604/1153650585376133210/a6bbf00593af813c.png" width="200" height="200">
                                   <p class="name">
+                                    <label >Name:</label>
                                     <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" 
                                     value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}"/>
                                   </p>
-                                
+                                  <p class="room">
+                                    <label >Room: </label> <br/>
+                                    <input name="romm" type="text" class="" placeholder="Name" id="name"value="{{Auth::user()->room_id}} "/>
+                                  </p>
                                   <p class="datetime">
                                     <label for="datetime">เลือกเวลาที่จะทำความสะอาด:</label>
                                     <input type="datetime-local" id="datetime" name="datetime">
@@ -118,6 +123,7 @@ rel="stylesheet"
                                 @csrf
 
                                 <p class="name">
+                                  <label >Name:</label>
                                   <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" name="fname" 
                                   id="name" value="{{Auth::user()->firstname}} {{Auth::user()->lastname}}" /> 
                                 </p>
@@ -138,8 +144,6 @@ rel="stylesheet"
 
                     </div>
                 </div>
-
-                    
               
                     <div id="icon-wrapper">
                         <a href="#popup1">
