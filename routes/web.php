@@ -37,7 +37,7 @@ Route::get('/newdashboard', function () {
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('/registration', function(){
     return view('registration/registration');
@@ -58,6 +58,10 @@ Route::get('/unregisdetail', function(){
     return view('roomdetail/unregisroom-detail');
 })->name('unregisroomdetail');
 
+Route::get('/homead', function(){
+    return view('admin/adminhome/adminhome');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -77,6 +81,10 @@ Route::get('/inform/maidcall', function () {
 Route::get('/manage-payments', [ManagePayments::class, 'index'])->name('manage.payments');
 Route::get('/manage-bills', function () {
     return view('/admin/payments/manage-bill');
+});
+
+Route::get('/contactad', function(){
+    return view('admin/contract/mange-contract');
 });
 // Route::post('/checking', [])
 

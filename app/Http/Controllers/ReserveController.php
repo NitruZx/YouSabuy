@@ -35,11 +35,10 @@ class ReserveController extends Controller
         ]);
         
         $room = Room::where('room_id', '=', $request->input('choose'))->first();
-        
+
 
         if ($room->exists()) {
             if ($this->checkReg()) {
-
                 return back()->with('message', 'You have already registration');
             }
             else if ($this->updateRoomStatus($request->input('choose')) && ($room->status == 'available')) {
