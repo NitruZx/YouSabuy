@@ -39,38 +39,46 @@
         <div class="px-6 text-center text-white md:px-12">
           <h1 class="mb-6 text-5xl font-bold">Welcome to YouSabuyMansion</h1>
           <h3 class="mb-8 text-3xl font-bold">นิยามที่แท้จริงของอพาร์ตเมนท์ยุคใหม่ ที่คุณไม่ควรพลาด!!</h3>
-          {{-- <button
+              @auth
+              @if (Auth::user()->role === 'guest')
+              <a
+              type="button" href="{{route('regpage')}}"
+              class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              reserve now
+              </a>
+              @else
+                @livewire('status-card')
+                @if(Session::has('message'))
+                  <script>
+                    swal("Message", "{{ Session::get('message') }}", 'success',{
+                      button:true,
+                      button:"oK",
+                    });
+                  </script>
+                @endif
+              @endif
+              @endauth
+              @guest
+                 <button
             type="button"
             class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
             data-te-ripple-init
             data-te-ripple-color="light">
             reserve now
-          </button> --}}
-          <div
-  class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-  <h5
-    class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-    Card title
-  </h5>
-  <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-    Some quick example text to build on the card title and make up the
-    bulk of the card's content.
-  </p>
-  <button
-    type="button"
-    class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-    data-te-ripple-init
-    data-te-ripple-color="light">
-    Button
-  </button>
-</div>
+          </button> 
+              @endguest
+            
+          
+          
         </div>
       </div>
     </div>
   </div>
   <div id="blurBg"></div>
-  <div class="max-w-7xl mx-auto my-10 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+  <div class="max-w-4xl mx-auto my-10 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-xl dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
               <div
               id="carouselExampleCrossfade"
               class="relative"
@@ -112,7 +120,7 @@
                   data-te-carousel-item
                   data-te-carousel-active>
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+                    src="assets/image/bedroom.jpg"
                     class="block w-full"
                     alt="Wild Landscape" />
                 </div>
@@ -122,7 +130,7 @@
                   data-te-carousel-fade
                   data-te-carousel-item>
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+                    src="https://cdn.discordapp.com/attachments/1010817962300674058/1159518553142198372/The-Garden-Condo-Residences.jpg?ex=653150cd&is=651edbcd&hm=5ba922318cc2f383e6d156bda7d4caeea4e7382aa14c0aa62647f7fc07fc5e03&"
                     class="block w-full"
                     alt="Camera" />
                 </div>
@@ -132,7 +140,7 @@
                   data-te-carousel-fade
                   data-te-carousel-item>
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+                    src="assets/image/laundry.jpg"
                     class="block w-full"
                     alt="Exotic Fruits" />
                 </div>
@@ -300,6 +308,5 @@
       <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">YouSabuyMansion</a>. All Rights Reserved.</span>
   </div>
 </footer>
-
 
 @endsection

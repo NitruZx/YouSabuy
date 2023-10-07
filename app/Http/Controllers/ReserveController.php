@@ -15,7 +15,8 @@ use function PHPUnit\Framework\returnSelf;
 
 class ReserveController extends Controller
 {
-    function index(Request $request){
+    function index(Request $request)
+    {
         $rooms = DB::table('rooms')->where('status', 'available')->get();
         return view('registration/registration', compact('rooms'));
         $registrations = new Registration;
@@ -25,15 +26,14 @@ class ReserveController extends Controller
         $registrations->room_id = $request->choose;
         $registrations->save();
         return redirect()->route('roomdetail');
-
-        
     }
 
-    function addinfo(Request $request){
+    function addinfo(Request $request)
+    {
         $request->validate([
-            'choose' => 'required',    
+            'choose' => 'required',
         ]);
-        
+
         $room = Room::where('room_id', '=', $request->input('choose'))->first();
 
 
@@ -68,15 +68,17 @@ class ReserveController extends Controller
             return "No file uploaded.";
         }
     }
-    
-    private function updateRoomStatus($roomid) {
+
+    private function updateRoomStatus($roomid)
+    {
         $affected = DB::table('rooms')
-              ->where('room_id', $roomid)
-              ->update(['status' => 'unavailable']);
+            ->where('room_id', $roomid)
+            ->update(['status' => 'unavailable']);
         return $affected;
     }
 
-    private function addDateYear($date, $amount) {
+    private function addDateYear($date, $amount)
+    {
         // $year = (int)substr($date, 0, 4)+$amount;
         // return "{$year}".substr($date, 4);
         $startdate = Carbon::parse($date);
@@ -84,10 +86,9 @@ class ReserveController extends Controller
         return $enddate;
     }
 
-    private function checkReg() {
+    private function checkReg()
+    {
         $affected = DB::table('registrations')->where('client_id', Auth::user()->id)->first();
         return $affected != null;
     }
-
-    
 }

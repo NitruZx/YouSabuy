@@ -14,21 +14,33 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    @guest
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('roomdetail')">
+                        </x-nav-link>
+                        <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('roomdetail')">
                         {{ __('Roomdetail') }}
-                    </x-nav-link>
+                        </x-nav-link>
+                    @endguest            
                     @if (Route::has('login'))
                         @auth
                         @if (Auth::user()->role === 'tenant')
-                        <x-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
-                            {{ __('Payments') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('inform')" :active="request()->routeIs('inform')">
-                            {{ __('Informs') }}
-                        </x-nav-link>
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('payment')" :active="request()->routeIs('payment')">
+                                {{ __('Payments') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('inform')" :active="request()->routeIs('inform')">
+                                {{ __('Informs') }}
+                            </x-nav-link>
+                        @else
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('roomdetail')">
+                            {{ __('Roomdetail') }}
+                            </x-nav-link>
                         @endif
                         @endauth
                     @endif
