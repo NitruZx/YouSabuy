@@ -63,4 +63,15 @@
             </x-primary-button>
         </div>
     </form>
+
+
+
+    @if(Session::has('success'))
+    <script>
+      swal("success", "{{ Session::get('success') }}", 'success',{
+        button:true,
+        button:"oK",
+      });
+      </script>
+    @endif
 </x-guest-layout>
