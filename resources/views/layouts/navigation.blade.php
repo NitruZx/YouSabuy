@@ -34,6 +34,10 @@
                             <x-nav-link :href="route('inform')" :active="request()->routeIs('inform')">
                                 {{ __('Informs') }}
                             </x-nav-link>
+                        {{-- @elseif (Auth::where()->role == 'admin')
+                        <x-nav-link :href="route('contractad')" :active="request()->routeIs('contractad')">
+                            {{ __('ADmincontract') }}
+                            </x-nav-link> --}}
                         @else
                             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
