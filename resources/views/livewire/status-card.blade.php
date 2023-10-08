@@ -12,7 +12,7 @@
     </h5>
     <div class="grid grid-cols-2 gap-4">
         <p class="mb-4 text-black text-neutral-600">
-          {{__("Name : ")}} {{ $reg->firstname }} {{ $reg->lastname }}
+          {{__("name : ")}} {{ $reg->firstname }} {{ $reg->lastname }}
         </p>
         <div class="text-black">
             status :

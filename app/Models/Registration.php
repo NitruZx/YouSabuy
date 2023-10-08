@@ -14,6 +14,14 @@ class Registration extends Model
     public $incrementing = false;
     const UPDATED_AT = null;
 
+    protected $fillable = [
+        'reg_status',
+        'room_id',
+        'client_id',
+        'startdate',
+        'enddate'
+    ];
+
     public function client(): BelongsTo {
         return $this->belongsTo(Client::class, 'client_id');
     }
