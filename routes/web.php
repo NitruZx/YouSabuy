@@ -12,6 +12,7 @@ use App\Http\Controllers\ManagePayments;
 use App\Http\Controllers\CheckReportController;
 use App\Http\Controllers\CheckRepairController;
 use App\Http\Controllers\CheckMaidCallController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
@@ -26,9 +27,7 @@ use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/newdashboard', function () {
     return view('newdashboard');
@@ -58,13 +57,14 @@ Route::get('/unregisdetail', function(){
     return view('roomdetail/unregisroom-detail');
 })->name('unregisroomdetail');
 
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/homead', function(){
     return view('admin/adminhome/adminhome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 // ->middleware(['auth', 'verified', 'checkregis'])
 Route::post('/paymentlist/paying', function (Request $request) {
     $value = $request->totalPrice;

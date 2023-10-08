@@ -37,21 +37,20 @@ class ReserveController extends Controller
         $room = Room::where('room_id', '=', $request->input('choose'))->first();
 
 
-        if ($room->exists()) {
-            if ($this->checkReg()) {
-                return back()->with('message', 'You have already registration');
-            }
-            else if ($this->updateRoomStatus($request->input('choose')) && ($room->status == 'available')) {
-                $registration = new Registration;
-                $registration->startdate = $request->input('datecheckin');
-                $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
-                $registration->client_id = Auth::user()->id;
-                $registration->room_id = $request->input('choose');
-                $registration->save();
-                return back()->with('success', "You have completed registration");
-            }
-        } 
-        return redirect()->route('roomdetail');
+        if ($this->checkReg()) {
+
+            return back()->with('message', 'You have already registration');
+        } else if ($this->updateRoomStatus($request->input('choose')) && ($room->status == 'available')) {
+            $registration = new Registration;
+            $registration->startdate = $request->input('datecheckin');
+            $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
+            $registration->client_id = Auth::user()->id;
+            $registration->room_id = $request->input('choose');
+            $registration->save();
+            // return redirect()->route('roomdetail');
+            return redirect()->route('dashboard')->with('success', "You have completed registration");
+        }
+        // return redirect()->route('roomdetail');
     }
     public function upload(Request $request)
     {

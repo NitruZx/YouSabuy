@@ -40,7 +40,7 @@
           <h1 class="mb-6 text-5xl font-bold">Welcome to YouSabuyMansion</h1>
           <h3 class="mb-8 text-3xl font-bold">นิยามที่แท้จริงของอพาร์ตเมนท์ยุคใหม่ ที่คุณไม่ควรพลาด!!</h3>
               @auth
-              @if (Auth::user()->role === 'guest')
+              @if (Auth::user()->role === 'guest' && !$isreg)
               <a
               type="button" href="{{route('regpage')}}"
               class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"

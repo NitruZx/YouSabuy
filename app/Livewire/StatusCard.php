@@ -38,6 +38,7 @@ class StatusCard extends Component
     public function mount() {
         $this->reg = DB::table('registrations')
                     ->join('clients', 'clients.id', '=', 'registrations.client_id')
+                    ->select('registrations.*', 'clients.firstname', 'clients.lastname')
                     ->where('client_id', Auth::user()->id)->first();
         // $this->status = $this->reg->reg_status;
     }
