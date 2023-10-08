@@ -10,6 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Filament\Tables\Actions\DeleteAction;
 
 class AdminReport extends Component implements HasForms, HasTable
 {
@@ -32,7 +33,10 @@ class AdminReport extends Component implements HasForms, HasTable
                 TextColumn::make('created_at')->searchable(),
                 TextColumn::make('')->searchable()
                
-            ]);
+                ])
+                ->actions([
+                    DeleteAction::make(),
+                ]);
     }
 
     public function render()

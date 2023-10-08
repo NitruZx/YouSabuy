@@ -10,6 +10,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\DeleteAction;
 
 class AdminRepair extends Component implements HasForms, HasTable
 {
@@ -31,7 +33,12 @@ class AdminRepair extends Component implements HasForms, HasTable
                 TextColumn::make('description')->searchable(),
                 TextColumn::make('status')->searchable(),
                 TextColumn::make('created_at')->searchable()
-            ]);
+                ])
+                ->actions([
+                    Action::make('finish')
+                    ->button(),
+                    DeleteAction::make(),
+                ]);
     }
 
     public function render()
