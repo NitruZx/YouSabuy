@@ -102,7 +102,7 @@
   
   /* Form */
   .form {
-    width: clamp(320px, 30%, 430px);
+    width: clamp(900px, 30%, 430px);
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 1.5rem;

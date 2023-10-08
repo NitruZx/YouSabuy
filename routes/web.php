@@ -85,7 +85,7 @@ Route::get('/manage-bills', function () {
 
 Route::get('/contactad', function(){
     return view('admin/contract/mange-contract');
-});
+})->name('contractad');
 // Route::post('/checking', [])
 
 Route::post('/paymentlist/checkout', [PaymentController::class, 'checkout'])->name('createpayment');

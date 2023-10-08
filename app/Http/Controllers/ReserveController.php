@@ -48,8 +48,6 @@ class ReserveController extends Controller
                 $registration->client_id = Auth::user()->id;
                 $registration->room_id = $request->input('choose');
                 $registration->save();
-                return redirect()->route('roomdetail');
-            } else {
                 return back()->with('success', "You have completed registration");
             }
         } 
