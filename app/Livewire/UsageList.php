@@ -16,6 +16,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 use Filament\Forms\Components\TextInput;
@@ -87,8 +88,15 @@ class UsageList extends Component implements HasForms, HasTable
                 TextColumn::make('created_at')->searchable(),
             ])
             ->actions([
-                Action::make('edit')
-                ->button(),
+                EditAction::make()
+                ->form([
+                    TextInput::make('monthly_water_units')
+                        ->required()
+                        ->numeric(),
+                    TextInput::make('monthly_electric_units')
+                        ->required()
+                        ->numeric(),
+                ]),
                 DeleteAction::make(),
                 ViewAction::make()
                 ->form([

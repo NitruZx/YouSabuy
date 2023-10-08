@@ -7,12 +7,12 @@
       @endif
         <div class="p-4 text-gray-900">
             <center><x-heroicon-m-user class="h-10 w-10"/></center>
-             {{__("Reserve room : ")}} {{ $reg->room_id }}
+             {{__("Room : ")}} {{ $reg->room_id }}
         </div>
     </h5>
     <div class="grid grid-cols-2 gap-4">
         <p class="mb-4 text-black text-neutral-600">
-            {{ $reg->firstname }} {{ $reg->lastname }}
+          {{__("Name : ")}} {{ $reg->firstname }} {{ $reg->lastname }}
         </p>
         <div class="text-black">
             status :
@@ -27,9 +27,15 @@
         <p class="mb-4 text-base text-neutral-600">
             start : {{ $reg->startdate }}
         </p>
+        @if ($reg->reg_status === 'pending')
         <p class="mb-4 text-base text-neutral-600">
-            end : {{ $reg->enddate }}
+            expired : ---
         </p>
+        @else
+        <p class="mb-4 text-base text-neutral-600">
+          expired : {{ $reg->enddate }}
+        </p>
+        @endif
     </div>
     {{-- <button
       type="button" wire:click="showConfirm"
@@ -40,6 +46,7 @@
     </button> --}}
     @if ($reg->reg_status === 'accept')
     <!-- Button trigger modal -->
+    <p class="mb-3 text-xs text-black">*หมายเหตุ : หากไม่มีการยกเลิกสัญญาก่อนวันหมดสัญญา จะทำการต่อสัญญาอัตโนมัติ</p>
 <button
 type="button"
 class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]"

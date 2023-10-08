@@ -24,26 +24,6 @@
         @livewireStyles
         @filamentStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <!-- Font Awesome -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-rel="stylesheet"
-/>
-<!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
-></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -182,66 +162,111 @@ rel="stylesheet"
         <div class="py-7">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    
-                        <!-- Tabs navs -->
-                        
-<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link active"
-        id="ex1-tab-1"
-        data-mdb-toggle="tab"
-        href="#ex1-tabs-1"
-        role="tab"
-        aria-controls="ex1-tabs-1"
-        aria-selected="true"
-        >Report</a
-      >
-    </li>
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link"
-        id="ex1-tab-2"
-        data-mdb-toggle="tab"
-        href="#ex1-tabs-2"
-        role="tab"
-        aria-controls="ex1-tabs-2"
-        aria-selected="false"
-        >Repair request</a
-      >
-    </li>
-    <li class="nav-item" role="presentation">
-      <a
-        class="nav-link"
-        id="ex1-tab-3"
-        data-mdb-toggle="tab"
-        href="#ex1-tabs-3"
-        role="tab"
-        aria-controls="ex1-tabs-3"
-        aria-selected="false"
-        >Maid call</a
-      >
-    </li>
-  </ul>
-  <!-- Tabs navs -->
-  
-  <!-- Tabs content -->
-  <div class="tab-content" id="ex1-content">
+                  <div
+    class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+    <h2 class="mb-0" id="headingOne5">
+      <button
+        class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+        type="button"
+        data-te-collapse-init
+        data-te-target="#collapseOne5"
+        aria-expanded="true"
+        aria-controls="collapseOne5">
+        Inform History
+        <span
+          class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+      </button>
+    </h2>
     <div
-      class="tab-pane fade show active"
-      id="ex1-tabs-1"
-      role="tabpanel"
-      aria-labelledby="ex1-tab-1"
-    >
-      @include('Client.Inform.report')
-    </div>
-    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-        @include('Client.Inform.repair-request')
-    </div>
-    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-        @include('Client.Inform.maidcall')
+      id="collapseOne5"
+      class="!visible"
+      data-te-collapse-item
+      data-te-collapse-show
+      aria-labelledby="headingOne5">
+      <!-- Tabs navs -->
+                        <ul
+                        class="mb-5 flex list-none flex-row flex-wrap border-b-0 pl-0"
+                        role="tablist"
+                        data-te-nav-ref>
+                        <li role="presentation" class="flex-grow basis-0 text-center">
+                          <a
+                            href="#tabs-home02"
+                            class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+                            data-te-toggle="pill"
+                            data-te-target="#tabs-home02"
+                            data-te-nav-active
+                            role="tab"
+                            aria-controls="tabs-home02"
+                            aria-selected="true"
+                            >Report</a
+                          >
+                        </li>
+                        <li role="presentation" class="flex-grow basis-0 text-center">
+                          <a
+                            href="#tabs-profile02"
+                            class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+                            data-te-toggle="pill"
+                            data-te-target="#tabs-profile02"
+                            role="tab"
+                            aria-controls="tabs-profile02"
+                            aria-selected="false"
+                            >Repair Request</a
+                          >
+                        </li>
+                        <li role="presentation" class="flex-grow basis-0 text-center">
+                          <a
+                            href="#tabs-messages02"
+                            class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+                            data-te-toggle="pill"
+                            data-te-target="#tabs-messages02"
+                            role="tab"
+                            aria-controls="tabs-messages02"
+                            aria-selected="false"
+                            >Maid Call</a
+                          >
+                        </li>
+                      </ul>
+                      
+                      <!--Tabs content-->
+                      <div class="mb-6">
+                        <div
+                          class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                          id="tabs-home02"
+                          role="tabpanel"
+                          aria-labelledby="tabs-home-tab02"
+                          data-te-tab-active>
+                          @include('Client.Inform.report')
+                        </div>
+                        <div
+                          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                          id="tabs-profile02"
+                          role="tabpanel"
+                          aria-labelledby="tabs-profile-tab02">
+                          @include('Client.Inform.repair-request')
+                        </div>
+                        <div
+                          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                          id="tabs-messages02"
+                          role="tabpanel"
+                          aria-labelledby="tabs-profile-tab02">
+                          @include('Client.Inform.maidcall')
+                        </div>
     </div>
   </div>
+                        
   <!-- Tabs content -->
                 </div>
             </div>
@@ -249,5 +274,6 @@ rel="stylesheet"
         </div>
         @filamentScripts
         @livewireScripts
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     </body>
 </html>
