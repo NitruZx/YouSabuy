@@ -57,15 +57,20 @@
                                         </td>
                                         <td class="px-6 py-4">
                                           @if ($data->diff > 0 && $data->status === 'unpaid')
-                                          {{$data->diff * 100}}
-                                          @php
+                                            {{$data->diff * 100}}
+                                            @php
                                               $late_fee = $data->diff * 100;
-                                          @endphp
-                                          @elseif ($data->diff > 0 && $data->status === 'paid')
+                                            @endphp
+                                          @elseif ($data->diff <= 0 && $data->status === 'unpaid')
                                             {{$data->late_fee}}
-                                          @php
+                                            @php
                                               $late_fee = $data->late_fee;
-                                          @endphp
+                                            @endphp
+                                          @elseif ($data->status === 'paid')
+                                            {{$data->late_fee}}
+                                            @php
+                                              $late_fee = $data->late_fee;
+                                            @endphp
                                           @endif
                                         </td>
                                         <td class="px-6 py-4">
