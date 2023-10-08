@@ -9,4 +9,5 @@ class Payment extends Model
 {
     use HasFactory;
     const UPDATED_AT = null;
+    protected $primaryKey = 'bill_id';
 }

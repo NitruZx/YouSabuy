@@ -12,6 +12,9 @@
                     {{-- <livewire:usage-list lazy="on-load" /> --}}
                     @livewire('usage-list')
                 </div>
+                <div>
+                    @livewire(\App\Livewire\WaterUnitChart::class)
+                </div>
             </div>
         </div>
     </div>
