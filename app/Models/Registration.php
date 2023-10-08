@@ -10,7 +10,7 @@ class Registration extends Model
 {
     use HasFactory;
     protected $table = 'registrations';
-    protected $primaryKey = ['room_id', 'client_id'];
+    protected $primaryKey = 'client_id';
     public $incrementing = false;
     const UPDATED_AT = null;
 

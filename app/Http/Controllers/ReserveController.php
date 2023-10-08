@@ -91,4 +91,9 @@ class ReserveController extends Controller
         $affected = DB::table('registrations')->where('client_id', Auth::user()->id)->first();
         return $affected != null;
     }
+
+    public function buttt(){
+        $butt = Registration::where('reg_status', '=', 'pending')->first();
+        return $butt != null;
+    }
 }

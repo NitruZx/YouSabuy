@@ -5,6 +5,7 @@ namespace App\Livewire;
 
 use App\Models\Reservation;
 use App\Models\Registration;
+use App\Http\Controllers\ReserveController;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -32,17 +33,13 @@ class Tablecontract extends Component implements HasForms, HasTable
                 TextColumn::make('room_id'),
                 TextColumn::make('client.firstname')->label('Firstname')->searchable(),
                 TextColumn::make('client.lastname')->label('Lastname')->searchable(),
+                TextColumn::make('reg_status')->label('Status'),
                 TextColumn::make('created_at')->searchable(),
             ])
             ->actions([
                 Action::make('Accept')
                 ->button(),
                 DeleteAction::make(),
-                ViewAction::make()
-                ->form([
-                    TextInput::make('room_id')
-                        ->required()
-                ]),
             ]);
     }
 
