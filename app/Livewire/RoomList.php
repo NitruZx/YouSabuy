@@ -15,6 +15,7 @@ use Filament\Tables\Actions\Action;
 use Illuminate\Contracts\View\View;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
@@ -47,7 +48,7 @@ class RoomList extends Component implements HasForms, HasTable
                 // ...
             ])
             ->actions([
-                // ...
+                EditAction::make(),
             ])
             ->bulkActions([
                 // ...

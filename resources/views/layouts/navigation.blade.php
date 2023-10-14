@@ -19,7 +19,7 @@
                         {{ __('Dashboard') }}
                         </x-nav-link>
                         <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('roomdetail')">
-                        {{ __('Roomdetail') }}
+                        {{ __('View Room') }}
                         </x-nav-link>
                     @endguest            
                     @if (Route::has('login'))
@@ -43,7 +43,7 @@
                             {{ __('Dashboard') }}
                             </x-nav-link>
                             <x-nav-link :href="route('roomdetail')" :active="request()->routeIs('roomdetail')">
-                            {{ __('Roomdetail') }}
+                            {{ __('View Room') }}
                             </x-nav-link>
                         @endif
                         @endauth

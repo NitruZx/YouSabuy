@@ -30,6 +30,12 @@
                                           วันครบกำหนด
                                         </th>
                                         <th scope="col" class="px-6 py-3">
+                                          ค่าน้ำ
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                          ค่าไฟ
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
                                           ค่าปรับ(บาท)
                                         </th>
                                         <th scope="col" class="px-6 py-3">
@@ -54,6 +60,12 @@
                                         </th>
                                         <td class="px-6 py-4">
                                           {{ $data->due}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                          {{ $data->water_bill}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                          {{ $data->electric_bill}}
                                         </td>
                                         <td class="px-6 py-4">
                                           @if ($data->diff > 0 && $data->status === 'unpaid')

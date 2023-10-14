@@ -81,9 +81,13 @@ Route::get('/inform/maidcall', function () {
 Route::get('/manage-payments', [ManagePayments::class, 'index'])->name('manage.payments');
 Route::get('/manage-bills', function () {
     return view('/admin/payments/manage-bill');
+})->name('manage.bills');
+
+Route::get('/manage-room', function() {
+    return view('admin/manage-room');
 });
 
-Route::get('/contactad', function(){
+Route::get('/manage-registrations', function(){
     return view('admin/contract/mange-contract');
 })->name('contractad');
 // Route::post('/checking', [])
@@ -118,9 +122,9 @@ Route::middleware('auth')->group(function () {
 
 Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
 //Admin view all report
-Route::get('/admin_report', [CheckReportController::class, 'index']);
-Route::get('/admin_repair', [CheckRepairController::class, 'index']);
-Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index']);
+Route::get('/admin_report', [CheckReportController::class, 'index'])->name('admin.report');
+Route::get('/admin_repair', [CheckRepairController::class, 'index'])->name('admin.repair-request');
+Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index'])->name('admin.maidcall');
 
 Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');

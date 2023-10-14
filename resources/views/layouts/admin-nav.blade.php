@@ -12,8 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('contractad')" :active="request()->routeIs('contractad')">
+                        {{ __('Registrations') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('manage.payments')" :active="request()->routeIs('manage.payments')">
+                        {{ __('Payments') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('manage.bills')" :active="request()->routeIs('manage.bills')">
+                        {{ __('Usage') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.report')" :active="request()->routeIs('admin.report')">
+                        {{ __('Report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.repair-request')" :active="request()->routeIs('admin.repair-request')">
+                        {{ __('Repair') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.maidcall')" :active="request()->routeIs('admin.maidcall')">
+                        {{ __('Maid Call') }}
                     </x-nav-link>
                 </div>
             </div>

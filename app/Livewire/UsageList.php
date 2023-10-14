@@ -47,7 +47,7 @@ class UsageList extends Component implements HasForms, HasTable
                     Select::make('room_id')
                         ->label('Room')
                         ->placeholder('Room ID')
-                        ->options(Room::all()->pluck('room_id', 'room_id'))
+                        ->options(Room::where('status', 'unavailable')->pluck('room_id', 'room_id'))
                         ->required(),
                     Fieldset::make('Usage unit')
                         ->schema([
@@ -130,11 +130,11 @@ class UsageList extends Component implements HasForms, HasTable
                         ->columns(2)  
                 ]),
                 DeleteAction::make(),
-                ViewAction::make()
-                ->form([
-                    TextInput::make('room_id')
-                        ->required()
-                ]),
+                // ViewAction::make()
+                // ->form([
+                //     TextInput::make('room_id')
+                //         ->required()
+                // ]),
             ])
             ->groups([
                 'room_id'
