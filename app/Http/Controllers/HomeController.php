@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     public function index() {
         $isreg = false;
+        $register = null;
         $members = null;
         $members_cnt = 0;
         if (Auth::check()) {
@@ -21,8 +22,9 @@ class HomeController extends Controller
                                         ->join('clients', 'registrations.client_id', '=', 'clients.id')
                                         ->get();
                 $members_cnt = $members->count();
+                $register = Registration::where('client_id', '=', Auth::user()->id)->first();
             }
         }
-        return view('dashboard', compact('isreg', 'members', 'members_cnt'));
+        return view('dashboard', compact('isreg', 'members', 'members_cnt', 'register'));
     }
 }

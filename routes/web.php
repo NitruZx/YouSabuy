@@ -112,7 +112,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/inform/report/sent', [InformController::class, 'report'])->name('reporttext');
     Route::post('/inform/repair-request/sent', [InformController::class, 'repair'])->name('repairtext');
 
-    
+    Route::post('/token', [ReserveController::class, 'join'])->name('token');
     // Route::get('/infrom/}', [InformController::class,'getreport']);
     Route::get('/test', function () {
         return view('Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
