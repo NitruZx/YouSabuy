@@ -39,7 +39,7 @@
         <label for="rule">คุณยืนยันที่จะยอมรับกฎนี้หรือไม่</label><br>
 
         <div class="btns-group">
-            <a href="/roomdetail" class="btn btn-prev ">Back</a>
+            <a href="{{ url()->previous() }}" class="btn btn-prev ">Back</a>
             <a href="#" class="btn btn-next ">Next</a>
         </div>
       </div>
