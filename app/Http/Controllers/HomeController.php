@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function index() {
         $isreg = false;
-        $member = null;
-        $member_cnt = 0;
+        $members = null;
+        $members_cnt = 0;
         if (Auth::check()) {
             $reg = Registration::where('client_id', '=', Auth::user()->id)->exists();
             if ($reg) {
