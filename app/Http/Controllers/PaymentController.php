@@ -41,7 +41,7 @@ class PaymentController extends Controller
             'quantity' => 1,
          ]],
          'mode' => 'payment',
-         'success_url' => route('checkout.success', [], true)."?bill_id={$request->bill_id}&latefee={$request->charge}",
+         'success_url' => route('checkout.success', [], true)."?bill_id={$request->bill_id}&latefee={$request->charge}&total={$total}",
          'cancel_url' => route('checkout.success', [], true),
       ]);
 
@@ -64,7 +64,7 @@ class PaymentController extends Controller
          throw new NotFoundHttpException();
       }
       $todayDate = date("Y-m-d");
-      $update = DB::table('payments')->where('bill_id', $bill_id)->update(['status' => 'paid', 'checkout_date' => $todayDate, 'late_fee' => $request->latefee]);
+      $update = DB::table('payments')->where('bill_id', $bill_id)->update(['status' => 'paid', 'checkout_date' => $todayDate, 'late_fee' => $request->latefee, 'total' => $request->total]);
       if ($update) {
          return redirect()->back();
       }

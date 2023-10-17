@@ -19,13 +19,6 @@ class ReserveController extends Controller
     {
         $rooms = DB::table('rooms')->where('status', 'available')->get();
         return view('registration/registration', compact('rooms'));
-        $registrations = new Registration;
-        $registrations->startdate = $request->input('datecheckin');
-        $registrations->enddate = $this->addDateYear($request->input('datecheckin'), 1);
-        $registrations->client_id = Auth::user()->id;
-        $registrations->room_id = $request->choose;
-        $registrations->save();
-        return redirect()->route('roomdetail');
     }
 
     function addinfo(Request $request)
@@ -44,6 +37,7 @@ class ReserveController extends Controller
             $registration = new Registration;
             $registration->startdate = $request->input('datecheckin');
             $registration->enddate = $this->addDateYear($request->input('datecheckin'), 1);
+            $registration->reg_token = $this->generateRandomString(5);
             $registration->client_id = Auth::user()->id;
             $registration->room_id = $request->input('choose');
             $registration->save();
@@ -52,6 +46,19 @@ class ReserveController extends Controller
         }
         // return redirect()->route('roomdetail');
     }
+
+    function join(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+        ]);
+        if (Registration::where('reg_token', '=', $request->token)->exists()) {
+            return view('Client/test');
+        } else {
+            return redirect()->back()->with('token_failed', "Token not found");
+        }
+    }
+
     public function upload(Request $request)
     {
         $file = $request->file('file');
@@ -92,5 +99,19 @@ class ReserveController extends Controller
     public function buttt(){
         $butt = Registration::where('reg_status', '=', 'pending')->first();
         return $butt != null;
+    }
+
+    function generateRandomString($length) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        if (Registration::where('reg_token', '=', $randomString)->exists()) {
+            $this->generateRandomString($length);
+        } else {
+            return $randomString;
+        }
     }
 }

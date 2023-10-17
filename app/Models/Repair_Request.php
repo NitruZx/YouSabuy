@@ -18,7 +18,16 @@ class Repair_Request extends Model
     protected $primaryKey = 'request_id';
     public const UPDATED_AT = null;
 
+    protected $fillable = [
+        'status',
+        'technician_id'
+    ];
+
     public function client(): BelongsTo {
         return $this->belongsTo(Client::class, 'tenant_id');
+    }
+
+    public function staff(): BelongsTo {
+        return $this->belongsTo(Staff::class, 'technician_id');
     }
 }

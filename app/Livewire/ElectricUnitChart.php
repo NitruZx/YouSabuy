@@ -8,12 +8,11 @@ use Flowframe\Trend\Trend;
 use Filament\Support\RawJs;
 use Flowframe\Trend\TrendValue;
 
-class WaterUnitChart extends ChartWidget
+class ElectricUnitChart extends ChartWidget
 {
-    protected static ?string $heading = 'Water Unit Per Month';
-    protected static ?string $pollingInterval = null;
+    protected static ?string $heading = 'Electric Unit Per Month';
     protected static ?string $maxHeight = '300px';
-    protected static string $color = 'info';
+    protected static ?string $pollingInterval = null;
 
     protected function getData(): array
     {
@@ -23,11 +22,11 @@ class WaterUnitChart extends ChartWidget
                     end: now()->endOfYear(),
                 )
                 ->perMonth()
-                ->sum('monthly_water_units');
+                ->sum('monthly_electric_units');
         return [
             'datasets' => [
                 [
-                    'label' => 'Water Unit',
+                    'label' => 'Electric Unit',
                     'data' => $trend->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
@@ -55,4 +54,5 @@ class WaterUnitChart extends ChartWidget
         }
     JS);
 }
+
 }

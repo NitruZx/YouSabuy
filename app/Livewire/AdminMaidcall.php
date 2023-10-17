@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\MaidCall;
+use App\Models\Staff;
 use Livewire\Component;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -10,8 +11,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
 
 class AdminMaidcall extends Component implements HasForms, HasTable
 {
@@ -27,14 +30,47 @@ class AdminMaidcall extends Component implements HasForms, HasTable
                 ->label('Firstname')->searchable(),
                 TextColumn::make('client.lastname')
                 ->label('Lastname')->searchable(),
-                TextColumn::make('maid_id')->searchable(),
                 TextColumn::make('clean_date')->searchable(),
-                TextColumn::make('status')->searchable(),
+                TextColumn::make('status')->searchable()
+                            ->action(
+                                EditAction::make()
+                            )
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'unfinished' => 'warning',
+                                'finished' => 'success',
+                            })
+                            ->icon(fn (string $state): string => match ($state) {
+                                'unfinished' => 'heroicon-o-clock',
+                                'finished' => 'heroicon-o-check-circle',
+                            }),
+                TextColumn::make('staff.firstname')->label('Maid Firstname')
+                ->action(
+                    EditAction::make()
+                ),
+                TextColumn::make('staff.lastname')->label('Maid Lastname')
+                ->action(
+                    EditAction::make()
+                ),
                 TextColumn::make('created_at')->searchable()
                 ])
                 ->actions([
-                    Action::make('finish')
-                    ->button(),
+                    EditAction::make()
+                    ->form([
+                        Select::make('maid_id')
+                        ->label('Maid')
+                        ->placeholder('select maid')
+                        ->relationship(name: 'staff', titleAttribute: 'firstname')
+                        ->getOptionLabelFromRecordUsing(fn (Staff $record) => "{$record->firstname} {$record->lastname}")
+                        // ->options(Staff::where('role', 'maid')->pluck('staff_id', 'staff_id'))
+                        ->required(),
+                        Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'finished' => 'finished',
+                                'unfinished' => 'unfinished',
+                            ])
+                    ]),
                     DeleteAction::make(),
                 ]);
     }

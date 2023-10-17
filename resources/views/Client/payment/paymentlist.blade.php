@@ -30,6 +30,12 @@
                                           วันครบกำหนด
                                         </th>
                                         <th scope="col" class="px-6 py-3">
+                                          ค่าน้ำ
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                          ค่าไฟ
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
                                           ค่าปรับ(บาท)
                                         </th>
                                         <th scope="col" class="px-6 py-3">
@@ -56,16 +62,27 @@
                                           {{ $data->due}}
                                         </td>
                                         <td class="px-6 py-4">
+                                          {{ $data->water_bill}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                          {{ $data->electric_bill}}
+                                        </td>
+                                        <td class="px-6 py-4">
                                           @if ($data->diff > 0 && $data->status === 'unpaid')
-                                          {{$data->diff * 100}}
-                                          @php
+                                            {{$data->diff * 100}}
+                                            @php
                                               $late_fee = $data->diff * 100;
-                                          @endphp
-                                          @elseif ($data->diff > 0 && $data->status === 'paid')
+                                            @endphp
+                                          @elseif ($data->diff <= 0 && $data->status === 'unpaid')
                                             {{$data->late_fee}}
-                                          @php
+                                            @php
                                               $late_fee = $data->late_fee;
-                                          @endphp
+                                            @endphp
+                                          @elseif ($data->status === 'paid')
+                                            {{$data->late_fee}}
+                                            @php
+                                              $late_fee = $data->late_fee;
+                                            @endphp
                                           @endif
                                         </td>
                                         <td class="px-6 py-4">

@@ -23,8 +23,8 @@ class PaymentTable extends Component implements HasForms, HasTable
         return $table
             ->query(Payment::query())
             ->columns([
-                TextColumn::make('bill_id'),
-                TextColumn::make('room_id'),
+                TextColumn::make('bill_id')->sortable(),
+                TextColumn::make('room_id')->sortable(),
                 TextColumn::make('late_fee'),
                 TextColumn::make('total'),
                 TextColumn::make('status')
@@ -38,9 +38,9 @@ class PaymentTable extends Component implements HasForms, HasTable
                                 'unpaid' => 'heroicon-o-clock',
                                 'paid' => 'heroicon-o-check-circle',
                             }),
-                TextColumn::make('created_at'),
-                TextColumn::make('due_date'),
-                TextColumn::make('checkout_date'),
+                TextColumn::make('created_at')->sortable(),
+                TextColumn::make('due_date')->sortable(),
+                TextColumn::make('checkout_date')->sortable(),
                 ])
             ->groups([
                 Group::make('status'),

@@ -26,6 +26,14 @@
       <p id="backButton"><a href="#form">Don't have an account? Sign up now!</a></p>
     </div>
   </section> -->
+  @if(Session::has('token_failed'))
+    <script>
+      swal("Join failed", "{{ Session::get('token_failed') }}", 'error',{
+        button:true,
+        button:"oK",
+      });
+    </script>
+  @endif
   <div
     class="relative overflow-hidden bg-cover bg-no-repeat drop-shadow-2xl"
     style="
@@ -49,6 +57,18 @@
               data-te-ripple-color="light">
               reserve now
               </a>
+              <div class="mt-5">
+                <p>or join your friend room</p>
+                <button
+                  type="button"
+                  class="inline-block rounded-full border-2 border-neutral-50 px-3 pb-[6px] pt-1 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                  data-te-toggle="modal"
+                  data-te-target="#entertoken"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  join
+                </button>
+              </div>
               @else
                 @livewire('status-card')
                 @if(Session::has('success'))
@@ -62,22 +82,193 @@
               @endif
               @endauth
               @guest
-                 <button
-            type="button"
-            class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-            data-te-ripple-init
-            data-te-ripple-color="light">
-            reserve now
-          </button> 
+              <a
+              type="button" href="{{route('regpage')}}"
+              class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              reserve now
+              </a>
+                <div class="mt-5">
+                  <p>or join your friend room</p>
+                  <button
+                    type="button"
+                    class="inline-block rounded-full border-2 border-neutral-50 px-3 pb-[6px] pt-1 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                    data-te-toggle="modal"
+                    data-te-target="#entertoken"
+                    data-te-ripple-init
+                    data-te-ripple-color="light">
+                    join
+                  </button>
+                </div>
               @endguest
-            
-          
-          
         </div>
       </div>
     </div>
   </div>
-  <div id="blurBg"></div>
+  @auth
+  @if ((Auth::user()->role === 'guest' && $isreg) || Auth::user()->role === 'tenant')
+  <div
+  data-te-modal-init
+  class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+  id="exampleFrameTopModal"
+  tabindex="-1"
+  aria-labelledby="exampleFrameTopModalLabel"
+  aria-hidden="true">
+  <div
+    data-te-modal-dialog-ref
+    class="pointer-events-none relative w-full translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out">
+    <div
+      class="pointer-events-auto relative flex w-full flex-col border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+      <div class="relative flex-auto py-1" data-te-modal-body-ref>
+        <div class="my-4 flex items-center justify-center">
+          <h4>
+            <span
+              class="inline-block whitespace-nowrap rounded-[0.27rem] bg-neutral-50 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[18px] font-bold leading-none text-neutral-600"
+              id="token">{{$register->reg_token}}</span>
+          </h4>
+          <p class="mx-6 my-4">
+              @if ($register->reg_status === 'pending')
+                use this token to confirm your registrations.
+              @else
+                invite your friend by using this token.
+              @endif
+          </p>
+          <button
+            type="button" id="copy_token"
+            class="inline-block rounded bg-neutral-50 px-2 pb-2 pt-1 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+            <x-heroicon-o-clipboard class="h-5 w-5"/>
+          </button>
+          <button
+            type="button"
+            class="inline-block rounded bg-neutral-800 px-4 pb-2 pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
+            data-te-modal-dismiss>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
+@endauth
+<!-- Modal -->
+<div
+  data-te-modal-init
+  class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+  id="entertoken"
+  tabindex="-1"
+  aria-labelledby="entertoken"
+  aria-hidden="true">
+  <div
+    data-te-modal-dialog-ref
+    class="pointer-events-none relative w-full translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out">
+    <div
+      class="pointer-events-auto relative flex w-full flex-col border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+      <div class="relative flex-auto py-1" data-te-modal-body-ref>
+        <div class="my-4 flex items-center justify-center">
+          <form method="POST" action="{{ route('token') }}">
+            @csrf
+              <x-input-label for="token" :value="__('Enter Token:')" />
+              <x-text-input id="token" class="block mx-2" type="text" name="token" :value="old('token')" required autofocus />
+              <x-input-error :messages="$errors->get('token')" class="mt-2" />
+          
+          <button
+            type="submit"
+            class="inline-block rounded bg-primary px-4 pb-1.5 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+            Use it
+          </button>
+          </form>
+          <button
+            type="button"
+            class="ml-2 inline-block rounded bg-info px-4 pb-1.5 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-600 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-600 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]"
+            data-te-modal-dismiss>
+            No, thanks
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  @if ($members_cnt > 0)
+  <div class="py-10">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden sm:rounded-lg">
+        <div
+    class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+    <h2 class="mb-0" id="headingOne">
+      <button
+        class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+        type="button"
+        data-te-collapse-init
+        data-te-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne">
+        Room Members
+        <span
+          class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="!visible"
+      data-te-collapse-item
+      data-te-collapse-show
+      aria-labelledby="headingOne"
+      data-te-parent="#accordionExample">
+      <div class="px-0 py-0">
+        
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Fullname
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Tel.
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  <span class="sr-only">Edit</span>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+        @foreach ($members as $member)
+          <tr class="bg-white border-b hover:bg-gray-50">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{ $member->firstname }} {{ $member->lastname }}
+              </th>
+              <td class="px-6 py-4">
+                  {{ $member->tel }}
+              </td>
+              <td class="px-6 py-4 text-right">
+                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              </td>
+          </tr>
+        @endforeach
+      </tbody>
+  </table>
+</div>
+    </div>
+  </div>
+          
+      </div>
+    </div>
+  </div>
+  @endif
   <div class="max-w-4xl mx-auto my-10 sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
               <div
@@ -291,23 +482,26 @@
       <div class="sm:flex sm:items-center sm:justify-between">
         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
           <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-              <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-              </li>
-              <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-              </li>
-              <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
-              </li>
-              <li>
-                  <a href="#" class="hover:underline">Contact</a>
-              </li>
-          </ul>
+            <p>Email : Nakhan@gmail.com <br>
+              Contact : 095-502-6656 (Nakhan Ponboon)</p>
+            </ul>
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">YouSabuyMansion</a>. All Rights Reserved.</span>
   </div>
 </footer>
+<script>
+  document.getElementById("copy_token").addEventListener("click", copy_token);
 
+function copy_token() {
+    var copyText = document.getElementById("token");
+    var textArea = document.createElement("textarea");
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+    alert("Copied Token: " + textArea.value);
+}
+</script>
 @endsection

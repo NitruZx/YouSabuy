@@ -19,7 +19,8 @@ class Registration extends Model
         'room_id',
         'client_id',
         'startdate',
-        'enddate'
+        'enddate',
+        'reg_token'
     ];
 
     public function client(): BelongsTo {

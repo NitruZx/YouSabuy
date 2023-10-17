@@ -24,6 +24,17 @@ class StatusCard extends Component
         }
     }
 
+    public function deleteReg($client_id, $room_id) {
+        $affected = DB::table('registrations')->where('client_id', $client_id)->delete();
+        $affected2 = DB::table('rooms')
+              ->where('room_id', $room_id)
+              ->update(['status' => 'available']);
+        if ($affected && $affected2) {
+            session()->flash('status', 'The registrations has been cancelled.');
+            return redirect(request()->header('Referer'));
+        }
+    }
+
     public function resume($client_id) {
         $affected = DB::table('registrations')
               ->where('client_id', $client_id)

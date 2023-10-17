@@ -23,6 +23,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Enums\FiltersLayout;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 
@@ -90,8 +91,19 @@ class Tablecontract extends Component implements HasForms, HasTable
                             'pending' => 'pending',
                             'cancelled' => 'cancelled',
                         ])
-                ]),
-                DeleteAction::make(),
+                ])
+                ->using(function (Registration $record, array $data): Registration {
+                    $record->update($data);
+                    $client = DB::table('clients')->where('id', $record->client_id)->update(['role' => 'tenant']);            
+                    return $record;
+                }),
+                DeleteAction::make()
+                ->using(function (Registration $record, array $data): Registration {
+                    $record->delete($data);
+                    $rooms = DB::table('rooms')->where('room_id', $record->room_id)->update(['status' => 'available']);   
+                    $client = DB::table('clients')->where('id', $record->client_id)->update(['role' => 'guest']);
+                    return $record;
+                }),
             ]);
     }
 
