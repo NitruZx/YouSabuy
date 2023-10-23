@@ -30,7 +30,7 @@
                     @livewire('payment-table')
             </div>
             <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        @livewire(\App\Livewire\PaymentChart::class)
+                    @livewire(\App\Livewire\PaymentChart::class)
             </div>
 
         </div>
