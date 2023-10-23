@@ -12,6 +12,7 @@ use App\Http\Controllers\ManagePayments;
 use App\Http\Controllers\CheckReportController;
 use App\Http\Controllers\CheckRepairController;
 use App\Http\Controllers\CheckMaidCallController;
+use App\Http\Controllers\ConfirmReg;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
@@ -127,7 +128,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
+Route::get('/manage-registration/confirm', [ConfirmReg::class, 'index'])->name('reg.confirm');
 Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
 //Admin view all report
 Route::get('/admin_report', [CheckReportController::class, 'index'])->name('admin.report');
