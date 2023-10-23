@@ -26,4 +26,8 @@ class Registration extends Model
     public function client(): BelongsTo {
         return $this->belongsTo(Client::class, 'client_id');
     }
+
+    public function scopeSearch($query, $value) {
+        $query->where('room_id', 'like', "%{$value}%");
+    }
 }
