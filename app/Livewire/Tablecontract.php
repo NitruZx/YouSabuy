@@ -83,7 +83,7 @@ class Tablecontract extends Component implements HasForms, HasTable
             ])
             ->actions([
                 Action::make('View')
-                ->url(fn (Registration $record): string => route('reg.confirm', $record)),
+                ->url(fn (Registration $record): string => route('reg.confirm', ['reg' => $record])),
                 EditAction::make()
                 ->form([
                     Select::make('reg_status')
