@@ -27,7 +27,7 @@ use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware('checkadmin');
 
 Route::get('/newdashboard', function () {
     return view('newdashboard');
@@ -44,6 +44,9 @@ Route::get('/registration', function(){
 // Route::get('/history', function() {
 //     return view('history');
 // });
+Route::get('/joinn', function(){
+    return view('registration/join');
+});
 
 Route::get('/cadmin', function(){
     return view('contractadmin');
