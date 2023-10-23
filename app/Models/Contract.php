@@ -9,11 +9,14 @@ class Contract extends Model
 {
     use HasFactory;
     protected $table = 'contract';
+    public $timestamps = false;
+    protected $primaryKey = 'client_id';
+    public $incrementing = false;
     protected $fillable = [
         'room_id',
         'client_id',
         'address',
-        'id_card',
+        'citizen_id',
         'startdate',
         'enddate'
     ];

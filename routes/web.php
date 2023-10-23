@@ -93,7 +93,7 @@ Route::get('/manage-room', function() {
 
 Route::get('/contract', function(){
     return view('contract/contract');
-}); 
+})->name('contractt'); 
 
 Route::get('/manage-registrations', function(){
     return view('admin/contract/mange-contract');
@@ -141,7 +141,7 @@ Route::get('/่joinn', [ReserveController::class, 'join'])->name('joinpage')->m
 Route::post('addregis', [ReserveController::class, 'addregis'])->name('addregis');
 
 Route::get('/contract', [ContractController::class, 'showw'])->name('contractt');
-Route::post('addcontract', [ContractController::class, 'addcontract']);
+Route::post('addcontract', [ContractController::class, 'addcontract'])->name('addcontract');
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 

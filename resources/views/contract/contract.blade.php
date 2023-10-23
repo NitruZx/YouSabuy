@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{url('css/regis.css')}}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="{{ asset('js/regis.js')}}" defer></script>
     <title>Contract</title>
 </head>
 <body>
-    <div class="form">
+    <form action="{{route('addcontract')}}" method="post" class="form">
+        @csrf
         <div class="form-step form-step-active">
             <h1>ทำสัญญาผู้เช่าออนไลน์</h1>
             <hr>
@@ -27,13 +30,13 @@
                 </div>
             </div>
             <br>
-            <label for="address">ID CARD</label>
-            <input type="text" name="id_card" id="id_card" placeholder="ID CARD" ><br>
+            <label for="address">Citizen ID</label>
+            <input type="text" name="id_card" id="id_card" placeholder="Citizen ID" ><br>
 
             <label for="address">Address</label>
             <input type="text" name="address" id="address" placeholder="address"><br>
             <label for="datetime">เลือกวันที่จะเข้าอาศัย:</label>
-            <input class="form-control calendar" type="date" name="datecheckin" required>
+            <input class="form-control calendar" type="date" name="startdate" required>
             <br>
 
             <div class="btns-group">
@@ -47,7 +50,7 @@
         <div class="form-step">
             <h1>ข้อตกลงของสัญญา</h1>
             <div class="formcontract">
-                <iframe id="iframepdf" src="assets/pdf/guy.pdf" width="100%" height="600px"></iframe>
+                <iframe id="iframepdf" src="assets/pdf/contract.pdf" width="100%" height="600px"></iframe>
             </div>
             <br>
             <div>
@@ -57,14 +60,24 @@
 
                 <div class="btns-group">
                     <a href="#" class="btn btn-prev ">Back</a>
+                    
+                    <a href="{{route('dashboard')}}">
                     <input type="hidden" name="room_id" value="{{$room->room_id}}" />
                     <input type="hidden" name="client_id" value="{{$room->client_id}}" />
-                    <a href="{{route('dashboard')}}">
                     <input type="submit" value="Submit" class="inline-block rounded bg-primary px-6 pb-3.5 pt-3.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"></a>
                 </div>
         </div>
 
-    </div>
+    </form>
+
+    @if(Session::has('success'))
+    <script>
+      swal("success", "{{ Session::get('success') }}", 'success',{
+        button:true,
+        button:"oK",
+      });
+      </script>
+    @endif
 
 </body>
 </html>
