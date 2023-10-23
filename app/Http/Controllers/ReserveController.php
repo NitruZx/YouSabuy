@@ -28,8 +28,7 @@ class ReserveController extends Controller
         ]);
 
         $room = Room::where('room_id', '=', $request->input('choose'))->first();
-
-
+        
         if ($this->checkReg()) {
 
             return back()->with('message', 'You have already registration');
@@ -53,10 +52,25 @@ class ReserveController extends Controller
             'token' => 'required',
         ]);
         if (Registration::where('reg_token', '=', $request->token)->exists()) {
-            return view('Client/test');
+            
+            $join = Registration::where('reg_token', '=', $request->token)
+                                ->join('clients', 'registrations.client_id', '=', 'clients.id')
+                                ->first();
+
+            return view('registration/join', compact('join'));
         } else {
             return redirect()->back()->with('token_failed', "Token not found");
         }
+    }
+    public function addregis(Request $request){
+        $registration = new Registration;
+        $registration->startdate = $request->input('datein');
+        $registration->enddate = $this->addDateYear($request->input('datein'), 1);
+        $registration->reg_token = "";
+        $registration->client_id = Auth::user()->id;
+        $registration->room_id = $request->room_id;
+        $registration->save();
+        return redirect()->route('dashboard')->with('success', "You have completed JoinRoomate");
     }
 
     public function upload(Request $request)

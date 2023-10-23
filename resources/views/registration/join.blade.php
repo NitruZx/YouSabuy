@@ -10,16 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('js/regis.js')}}" defer></script>
     
-    <title>Registraion Form</title>
-    @livewireStyles
-    @filamentStyles
+    <title>Join Roommate</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body>    
 
-    <form action="{{route('reg.addinfo')}}" method="post" class="form" >
+    <form action="{{route('addregis')}}" method="post" class="form" >
       @csrf
-      <h1 class="text-center">Registration</h1>
+      <h1 class="text-center">Join Roommate</h1>
       <!-- Progress bar -->
       <div class="progressbar">
         <div class="progress" id="progress"></div>
@@ -28,8 +26,8 @@
           class="progress-step progress-step-active"
           data-title="Rule"
         ></div>
+        <div class="progress-step" data-title="ChooseDate"></div>
         <div class="progress-step" data-title="Room"></div>
-        <div class="progress-step" data-title="Checking"></div>
       </div>
 
       <!-- Steps -->
@@ -43,6 +41,53 @@
             <a href="#" class="btn btn-next ">Next</a>
         </div>
       </div>
+
+      <div class="form-step">
+        <div>
+          <div class="datetime">
+            <label for="datetime">เลือกวันที่จะเข้าอาศัย:</label>
+            <input class="form-control calendar" type="date" name="datein" required>
+            <input type="hidden" id="roomid" name="room_id" value="{{$join->room_id}}">
+          </div>
+        </div>
+        <br>
+
+        <div class="btns-group">
+            <a href="/roomdetail" class="btn btn-prev ">Back</a>
+            <a href="#" class="btn btn-next ">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <h3>ท่านยืนยันที่จะอยู่ร่วมห้องกับ {{$join->firstname}} {{$join->lastname}}</h3>
+        <h4>{{$join->room_id}}</h4>
+
+        <hr>
+        <div class="input-group">
+            <label for="fname">Firstname</label>
+            <input type="text" name="fname" id="fname" value="{{Auth::user()->firstname}}" readonly placeholder="FirstName" />
+            <label for="fname">Lastname</label>
+            <input type="text" name="lname" id="lname" value="{{Auth::user()->lastname}}" readonly placeholder="Last Name" />
+            <label for="fname">Phonenumber</label>
+            <input type="text" name="phone" id="phone" value="{{Auth::user()->tel}}" readonly placeholder="Tel." />
+            <label for="fname">Email</label>
+            <input type="text" name="email" id="email" value="{{Auth::user()->email}}" readonly placeholder="Email" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="{{route('roomdetail')}}">
+          <input type="submit" value="Submit" class="inline-block rounded bg-primary px-6 pb-3.5 pt-3.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+          </a>
+        </div>
+      </div>
+
+      @if(Session::has('success'))
+      <script>
+        swal("success", "{{ Session::get('success') }}", 'success',{
+          button:true,
+          button:"oK",
+        });
+        </script>
+      @endif
     
 </body>
 </html>

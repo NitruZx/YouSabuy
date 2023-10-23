@@ -12,6 +12,7 @@ use App\Http\Controllers\ManagePayments;
 use App\Http\Controllers\CheckReportController;
 use App\Http\Controllers\CheckRepairController;
 use App\Http\Controllers\CheckMaidCallController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
@@ -90,6 +91,10 @@ Route::get('/manage-room', function() {
     return view('admin/manage-room');
 });
 
+Route::get('/contract', function(){
+    return view('contract/contract');
+}); 
+
 Route::get('/manage-registrations', function(){
     return view('admin/contract/mange-contract');
 })->name('contractad');
@@ -131,6 +136,12 @@ Route::get('/admin_maidcall', [CheckMaidCallController::class, 'index'])->name('
 
 Route::get('/registration', [ReserveController::class, 'index'])->name('regpage')->middleware('checkreservelogin');
 Route::post('addinfo', [ReserveController::class, 'addinfo'])->name('reg.addinfo');
+
+Route::get('/่joinn', [ReserveController::class, 'join'])->name('joinpage')->middleware('checkreservelogin');
+Route::post('addregis', [ReserveController::class, 'addregis'])->name('addregis');
+
+Route::get('/contract', [ContractController::class, 'showw'])->name('contractt');
+Route::post('addcontract', [ContractController::class, 'addcontract']);
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 

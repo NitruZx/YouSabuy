@@ -94,7 +94,21 @@
     font-size: 0.85rem;
     color: #666;
   }
-  
+  .formcontract{
+    width: clamp(800px, 30%, 430px);
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .name {
+    display: flex;
+  }
+
+ 
+
+
   .progress-step-active {
     background-color: var(--primary-color);
     color: #f3f3f3;
