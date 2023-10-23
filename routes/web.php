@@ -127,7 +127,7 @@ Route::middleware('auth')->group(function () {
         return view('Client/test'); //Testing passing username variable (ไม่ต้องสนใจก็ได้)
     });
 });
-
+ 
 Route::get('/manage-registration/confirm', [ConfirmReg::class, 'index'])->name('reg.confirm');
 Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
 //Admin view all report
