@@ -56,7 +56,7 @@
             </div>
 
                 <div class="btns-group">
-                    <a href="{{ url()->previous() }}" class="btn btn-prev ">Back</a>
+                    <a href="#" class="btn btn-prev ">Back</a>
                     <input type="hidden" name="room_id" value="{{$room->room_id}}" />
                     <input type="hidden" name="client_id" value="{{$room->client_id}}" />
                     <a href="{{route('dashboard')}}">
