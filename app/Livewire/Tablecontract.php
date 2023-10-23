@@ -82,6 +82,8 @@ class Tablecontract extends Component implements HasForms, HasTable
                 Group::make('room_id')
             ])
             ->actions([
+                Action::make('View')
+                ->url(fn (Registration $record): string => route('reg.confirm', $record)),
                 EditAction::make()
                 ->form([
                     Select::make('reg_status')
@@ -105,6 +107,13 @@ class Tablecontract extends Component implements HasForms, HasTable
                     return $record;
                 }),
             ]);
+    }
+
+    protected function getTableRecordUrlUsing()
+    {
+        return function (Registration $record) {
+            return route('reg.confirm', ['reg' => $record]);
+        };
     }
 
     public function render()
