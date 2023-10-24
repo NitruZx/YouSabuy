@@ -21,9 +21,9 @@ class Reservation extends Model
         'reg_statuse',
         '_token'
                 ];
-                public function client(): BelongsTo {
-                    return $this->belongsTo(Client::class, 'client_id');
-                }
+    public function client(): BelongsTo {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
 
     
 }

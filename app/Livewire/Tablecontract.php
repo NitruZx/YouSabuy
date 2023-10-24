@@ -42,6 +42,7 @@ class Tablecontract extends Component implements HasForms, HasTable
                 ->options([
                     'accept' => 'accept',
                     'pending' => 'pending',
+                    'in-progress' => 'in-progress',
                     'cancelled' => 'cancelled',
                 ]),
                 ])
@@ -57,11 +58,13 @@ class Tablecontract extends Component implements HasForms, HasTable
                                 'pending' => 'warning',
                                 'accept' => 'success',
                                 'cancelled' => 'danger',
+                                'in-progress' => 'info'
                             })
                             ->icon(fn (string $state): string => match ($state) {
                                 'cancelled' => 'heroicon-s-x-circle',
                                 'pending' => 'heroicon-o-clock',
                                 'accept' => 'heroicon-o-check-circle',
+                                'in-progress' => 'heroicon-o-clock'
                             })
                             ->action(
                                 EditAction::make()
@@ -71,6 +74,7 @@ class Tablecontract extends Component implements HasForms, HasTable
                                         ->options([
                                             'accept' => 'accept',
                                             'pending' => 'pending',
+                                            'in-progress' => 'in-progress',
                                             'cancelled' => 'cancelled',
                                         ])
                                      ])
@@ -91,6 +95,7 @@ class Tablecontract extends Component implements HasForms, HasTable
                         ->options([
                             'accept' => 'accept',
                             'pending' => 'pending',
+                            'in-progress' => 'in-progress',
                             'cancelled' => 'cancelled',
                         ])
                 ])

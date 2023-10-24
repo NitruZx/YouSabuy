@@ -26,6 +26,7 @@ class ContractController extends Controller
         $contract->startdate = $request->input('startdate');
         $contract->enddate = $this->addDateYear($request->input('startdate'), 1);
         $contract->save();
+        
         return redirect()->route('dashboard')->with('success', "You have completed your contract");
     }
 

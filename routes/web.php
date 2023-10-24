@@ -129,6 +129,7 @@ Route::middleware('auth')->group(function () {
 });
  
 Route::get('/manage-registration/confirm', [ConfirmReg::class, 'index'])->name('reg.confirm');
+Route::post('/confirmReg', [ConfirmReg::class, 'confirmReg'])->name('confirm');
 Route::view('/admin_maidcall', '/admin/all_report/admin_maidcall')->middleware('auth');
 //Admin view all report
 Route::get('/admin_report', [CheckReportController::class, 'index'])->name('admin.report');
