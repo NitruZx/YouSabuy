@@ -193,7 +193,7 @@
           </div>
         </div>
 
-
+ 
         <div class="form-step">
           <h3>ท่านยืนยันจะเลือกห้อง</h3>
           <h4 id="chosen"></h4>

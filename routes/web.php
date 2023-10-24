@@ -147,5 +147,5 @@ Route::post('addcontract', [ContractController::class, 'addcontract'])->name('ad
 
 Route::post('/upload', 'ReserveController@upload')->name('file.upload');
 
-
+ 
 require __DIR__.'/auth.php';
