@@ -219,7 +219,7 @@ Cancel
   data-te-target="#exampleFrameTopModal"
   data-te-ripple-init
   data-te-ripple-color="light">
-  Show Token
+  Show Token 
 </button>
 <a href="{{route('contractt')}}">
   <input type="button" value="contract" 

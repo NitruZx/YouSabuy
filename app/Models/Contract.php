@@ -14,7 +14,7 @@ class Contract extends Model
     public $incrementing = false;
     protected $fillable = [
         'room_id',
-        'client_id',
+        'client_id', 
         'address', 
         'citizen_id',
         'startdate',
