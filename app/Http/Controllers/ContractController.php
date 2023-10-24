@@ -28,7 +28,7 @@ class ContractController extends Controller
         $contract->save();
         return redirect()->route('dashboard')->with('success', "You have completed your contract");
     }
-    
+
     private function addDateYear($date, $amount)
     {
         // $year = (int)substr($date, 0, 4)+$amount;
